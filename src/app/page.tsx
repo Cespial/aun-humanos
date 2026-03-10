@@ -384,7 +384,7 @@ function Navbar() {
           AÚN HUMANOS
         </a>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-4 lg:gap-7">
           {NAV_LINKS.map((link) => {
             const isActive = activeSection === link.href.slice(1);
             return (
@@ -509,7 +509,7 @@ function Hero() {
         <div className="hero-cta flex flex-wrap items-center gap-5">
           <a
             href="#somos"
-            className="font-[family-name:var(--font-geist-mono)] text-xs md:text-sm tracking-[0.15em] uppercase bg-[var(--accent)] hover:bg-[var(--accent-light)] text-white px-8 py-4 rounded-lg transition-all duration-400 hover:shadow-lg hover:shadow-[var(--accent)]/20"
+            className="font-[family-name:var(--font-geist-mono)] text-xs md:text-sm tracking-[0.15em] uppercase bg-[var(--accent)] hover:bg-[var(--accent-light)] text-white px-8 py-4 rounded-lg transition-all duration-500 hover:shadow-lg hover:shadow-[var(--accent)]/20"
           >
             Conoce qué hacemos
           </a>
@@ -603,7 +603,7 @@ function Somos() {
                 <div className="p-6 md:p-8 group hover:bg-[var(--accent)]/[0.03] transition-colors duration-500">
                   <MemberPhoto src={member.photo} name={member.name} isFounder={i === 0} />
                   <div className="flex items-start justify-between mb-3">
-                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] text-[var(--gray)] bg-[var(--accent)]/[0.06] px-2 py-1 rounded">
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[11px] tracking-[0.15em] text-[var(--gray)] bg-[var(--accent)]/[0.06] px-2 py-1 rounded">
                       {member.tag}
                     </span>
                     <span className="font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray)] opacity-40">
@@ -755,7 +755,7 @@ function TrianguloVital() {
                       { label: "Incluye", value: "Material, alimentación, certificado" },
                     ].map((item) => (
                       <div key={item.label}>
-                        <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] text-[var(--gray)] uppercase mb-1">
+                        <div className="font-[family-name:var(--font-geist-mono)] text-[11px] tracking-[0.15em] text-[var(--gray)] uppercase mb-1">
                           {item.label}
                         </div>
                         <div className="text-xs text-[var(--foreground)]">
@@ -769,7 +769,7 @@ function TrianguloVital() {
                     href="https://wa.me/573001234567?text=Quiero%20información%20sobre%20el%20retiro%20Triángulo%20Vital"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] text-[var(--accent)] hover:text-[var(--foreground)] transition-colors uppercase border border-[var(--accent)]/30 hover:border-[var(--accent)] px-4 py-2 rounded-lg"
+                    className="inline-block font-[family-name:var(--font-geist-mono)] text-[11px] tracking-[0.15em] text-[var(--accent)] hover:text-[var(--foreground)] transition-colors uppercase border border-[var(--accent)]/30 hover:border-[var(--accent)] px-4 py-2 rounded-lg"
                   >
                     Reservar cupo por WhatsApp
                   </a>
@@ -877,7 +877,7 @@ function HumanismoDigital() {
               </div>
               <a
                 href="#contacto"
-                className="inline-block font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] text-[var(--accent)] hover:text-[var(--foreground)] transition-colors uppercase"
+                className="inline-block font-[family-name:var(--font-geist-mono)] text-[11px] tracking-[0.15em] text-[var(--accent)] hover:text-[var(--foreground)] transition-colors uppercase"
               >
                 Solicitar certificación →
               </a>
@@ -942,10 +942,10 @@ function Servicios() {
                   </p>
 
                   <div className="flex flex-wrap gap-2 mb-2">
-                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.1em] text-[var(--accent)] bg-[var(--accent)]/[0.06] px-2 py-0.5 rounded">
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[11px] tracking-[0.1em] text-[var(--accent)] bg-[var(--accent)]/[0.06] px-2 py-0.5 rounded">
                       {service.format}
                     </span>
-                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.1em] text-[var(--gray)] bg-[var(--border)]/30 px-2 py-0.5 rounded">
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[11px] tracking-[0.1em] text-[var(--gray)] bg-[var(--border)]/30 px-2 py-0.5 rounded">
                       {service.audience}
                     </span>
                   </div>
@@ -953,7 +953,7 @@ function Servicios() {
                   <a
                     href="#contacto"
                     aria-label={`Consultar sobre ${service.title}`}
-                    className="inline-block mt-6 font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] text-[var(--gray)] group-hover:text-[var(--accent)] transition-colors uppercase"
+                    className="inline-block mt-6 font-[family-name:var(--font-geist-mono)] text-[11px] tracking-[0.15em] text-[var(--gray)] group-hover:text-[var(--accent)] transition-colors uppercase"
                   >
                     Consultar →
                   </a>
@@ -1077,7 +1077,7 @@ function Contacto() {
                     rel="noopener noreferrer"
                     className="group flex items-center gap-4 py-3 border-b border-[var(--border)]/30 hover:border-[var(--accent)] transition-colors"
                   >
-                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] text-[#25D366] w-8">WA</span>
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[11px] tracking-[0.15em] text-[#25D366] w-8">WA</span>
                     <span className="text-sm text-[var(--gray-light)] group-hover:text-[var(--accent)] transition-colors">
                       +57 300 123 4567
                     </span>
@@ -1086,13 +1086,13 @@ function Contacto() {
                     href="mailto:contacto@aunhumanos.com"
                     className="group flex items-center gap-4 py-3 border-b border-[var(--border)]/30 hover:border-[var(--accent)] transition-colors"
                   >
-                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] text-[var(--gray)] w-8">@</span>
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[11px] tracking-[0.15em] text-[var(--gray)] w-8">@</span>
                     <span className="text-sm text-[var(--gray-light)] group-hover:text-[var(--accent)] transition-colors">
                       contacto@aunhumanos.com
                     </span>
                   </a>
                   <div className="flex items-center gap-4 py-3 border-b border-[var(--border)]/30">
-                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] text-[var(--gray)] w-8">LOC</span>
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[11px] tracking-[0.15em] text-[var(--gray)] w-8">LOC</span>
                     <span className="text-sm text-[var(--gray-light)]">
                       Medellín, Colombia
                     </span>
@@ -1195,7 +1195,7 @@ function Publicaciones() {
                   </div>
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-3">
-                      <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] text-[var(--gray)] uppercase">
+                      <span className="font-[family-name:var(--font-geist-mono)] text-[11px] tracking-[0.15em] text-[var(--gray)] uppercase">
                         {pub.source}
                       </span>
                       <span className="font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray)] opacity-40">
@@ -1404,11 +1404,11 @@ function Footer() {
         </div>
 
         <div className="hidden md:flex items-center gap-6">
-          {NAV_LINKS.slice(1, 5).map((link) => (
+          {NAV_LINKS.slice(1).map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] uppercase text-[var(--gray)] hover:text-[var(--accent)] transition-colors"
+              className="font-[family-name:var(--font-geist-mono)] text-[11px] tracking-[0.15em] uppercase text-[var(--gray)] hover:text-[var(--accent)] transition-colors"
             >
               {link.label}
             </a>
@@ -1418,7 +1418,7 @@ function Footer() {
         {/* Back to top */}
         <a
           href="#inicio"
-          className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] uppercase text-[var(--gray)] hover:text-[var(--accent)] transition-colors"
+          className="font-[family-name:var(--font-geist-mono)] text-[11px] tracking-[0.15em] uppercase text-[var(--gray)] hover:text-[var(--accent)] transition-colors"
           aria-label="Volver al inicio"
         >
           ↑ INICIO

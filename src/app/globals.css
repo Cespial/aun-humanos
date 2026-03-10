@@ -24,7 +24,7 @@
   --color-border-light: var(--border-light);
   --color-surface: var(--surface);
   --color-surface-alt: var(--surface-alt);
-  --font-sans: var(--font-sans, system-ui, sans-serif);
+  --font-sans: var(--font-dm-sans, system-ui, sans-serif);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -32,7 +32,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
 }
 
@@ -66,11 +66,6 @@ body {
   background: var(--accent);
   z-index: 9998;
   transition: width 50ms linear;
-}
-
-/* CRT overlay — disabled for clean theme */
-.crt-overlay {
-  display: none;
 }
 
 /* Typing cursor blink */

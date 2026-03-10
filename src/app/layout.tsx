@@ -3,7 +3,7 @@ import { Geist_Mono, Playfair_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
 
 const sans = DM_Sans({
-  variable: "--font-sans",
+  variable: "--font-dm-sans",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
 });
@@ -40,7 +40,6 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${sans.variable} ${mono.variable} ${serif.variable} antialiased`}>
-        <div className="crt-overlay" />
         {children}
       </body>
     </html>
