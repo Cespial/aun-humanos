@@ -124,7 +124,7 @@ function SealSVG() {
     <svg viewBox="0 0 200 200" fill="none" className="w-40 h-40 md:w-48 md:h-48 svg-glow" role="img" aria-label="Sello de Humanismo Digital">
       <circle cx="100" cy="100" r="90" stroke="var(--accent)" strokeWidth="0.5" opacity="0.2" />
       <circle cx="100" cy="100" r="80" stroke="var(--accent)" strokeWidth="1" opacity="0.35" />
-      <circle cx="100" cy="100" r="70" stroke="var(--accent)" strokeWidth="0.3" opacity="0.15" strokeDasharray="4 6" />
+      <circle cx="100" cy="100" r="70" stroke="var(--accent)" strokeWidth="0.3" opacity="0.25" strokeDasharray="4 6" />
       {/* Outer notches */}
       {Array.from({ length: 36 }).map((_, i) => {
         const angle = (i * 10 * Math.PI) / 180;
@@ -133,11 +133,11 @@ function SealSVG() {
         const x2 = 100 + 88 * Math.cos(angle);
         const y2 = 100 + 88 * Math.sin(angle);
         return (
-          <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="var(--accent)" strokeWidth="0.5" opacity="0.25" />
+          <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="var(--accent)" strokeWidth="0.5" opacity="0.35" />
         );
       })}
       {/* Inner diamond */}
-      <path d="M100 55 L135 100 L100 145 L65 100 Z" stroke="var(--accent)" strokeWidth="0.8" opacity="0.3" fill="var(--accent)" fillOpacity="0.03" />
+      <path d="M100 55 L135 100 L100 145 L65 100 Z" stroke="var(--accent)" strokeWidth="0.8" opacity="0.4" fill="var(--accent)" fillOpacity="0.04" />
       {/* Center H */}
       <text x="100" y="95" textAnchor="middle" fill="var(--accent)" fontSize="22" fontFamily="serif" opacity="0.7" dominantBaseline="middle">
         H
@@ -145,7 +145,7 @@ function SealSVG() {
       {/* Circular text top */}
       <defs>
         <path id="topArc" d="M30,100 a70,70 0 0,1 140,0" />
-        <path id="bottomArc" d="M170,100 a70,70 0 0,1 -140,0" />
+        <path id="bottomArc" d="M30,100 a70,70 0 0,0 140,0" />
       </defs>
       <text fill="var(--accent)" fontSize="7" fontFamily="monospace" letterSpacing="0.3em" opacity="0.5">
         <textPath href="#topArc" startOffset="50%" textAnchor="middle">
@@ -254,7 +254,7 @@ function SectionHeader({ children }: { children: string }) {
 function TerminalDivider({ variant = 0 }: { variant?: number }) {
   const symbols = ["◆ ◆ ◆", "— · —", "═══", "▸ ▸ ▸", "◇ ◈ ◇"];
   return (
-    <div className="my-16 md:my-24 flex items-center gap-4 opacity-20 px-6 md:px-16 lg:px-24">
+    <div className="my-16 md:my-24 flex items-center gap-4 opacity-20 px-6 md:px-16 lg:px-24" role="separator" aria-hidden="true">
       <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
       <span className="font-[family-name:var(--font-geist-mono)] text-[10px] text-[var(--accent)] tracking-[0.5em]">
         {symbols[variant % symbols.length]}
@@ -440,7 +440,8 @@ function Hero() {
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
+        aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover z-0"
         style={{ filter: "brightness(0.5) contrast(1.15) grayscale(0.3)" }}
         src="/hero-video.mp4"
@@ -677,7 +678,7 @@ function TrianguloVital() {
 
                   {/* Center rings */}
                   <circle cx="200" cy="230" r="32" stroke="var(--accent)" strokeWidth="0.6" opacity="0.25" />
-                  <circle cx="200" cy="230" r="22" stroke="var(--accent)" strokeWidth="0.3" opacity="0.15" strokeDasharray="2 3" />
+                  <circle cx="200" cy="230" r="22" stroke="var(--accent)" strokeWidth="0.3" opacity="0.25" strokeDasharray="2 3" />
                   <circle cx="200" cy="230" r="5" fill="var(--accent)" opacity="0.5" />
 
                   {/* Vertex nodes — animated via CSS */}
@@ -892,6 +893,7 @@ function Servicios() {
 
                   <a
                     href="#contacto"
+                    aria-label={`Consultar sobre ${service.title}`}
                     className="inline-block mt-6 font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.2em] text-[var(--gray)] group-hover:text-[var(--accent)] transition-colors uppercase"
                   >
                     {">"} Consultar
@@ -1021,6 +1023,7 @@ function Contacto() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`${social.label} (abre en nueva pestaña)`}
                       className="group flex items-center gap-4 py-3 border-b border-[var(--border)]/30 hover:border-[var(--accent)] transition-colors"
                     >
                       <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gray)] w-8">
