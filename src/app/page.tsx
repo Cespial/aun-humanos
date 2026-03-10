@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { label: "Triángulo Vital", href: "#triangulo" },
   { label: "Humanismo Digital", href: "#humanismo" },
   { label: "Servicios", href: "#servicios" },
+  { label: "Publicaciones", href: "#publicaciones" },
   { label: "Contacto", href: "#contacto" },
 ];
 
@@ -41,6 +42,33 @@ const SERVICES = [
   { title: "Coaching Filosófico", desc: "Procesos individuales de 8 sesiones para líderes que buscan tomar decisiones más conscientes frente a los retos de la inteligencia artificial.", id: "coaching", format: "Virtual · 8 sesiones", audience: "Líderes y ejecutivos" },
   { title: "Conferencias y Keynotes", desc: "Charlas de alto impacto sobre humanismo digital, ética tecnológica y el futuro del trabajo humano. Para eventos corporativos y universidades.", id: "events", format: "Presencial · 60-90 min", audience: "Eventos y congresos" },
   { title: "Programa Educativo Aún Humanos", desc: "Curso de 6 módulos sobre pensamiento crítico en la era digital. Material filosófico y práctico con certificación de participación.", id: "education", format: "Virtual o presencial · 6 módulos", audience: "Profesionales y estudiantes" },
+];
+
+const PUBLICATIONS = [
+  {
+    title: "Un mundo digital sin reglas; de regreso al \"todo vale\"",
+    author: "Felipe Jaramillo Vélez",
+    excerpt: "Vivir sin normas es algo a lo que los seres humanos no estamos del todo habituados, y hoy los hombres enfrentan uno de los mayores retos de su historia, adaptarse a una realidad digital con leyes y límites imprecisos...",
+    image: "/publicaciones/mundo-digital.png",
+    href: "https://alponiente.com/un-mundo-digital-sin-reglas-de-regreso-al-todo-vale/",
+    source: "Al Poniente",
+  },
+  {
+    title: "¿Exceso de 'Blackout'?",
+    author: "Sergio Molina Pérez",
+    excerpt: "Vivimos en tiempos tentadores de usar el enrollable en la habitación antes que apreciar la luz natural. Meter la cabeza debajo de la almohada para evitar lo incómodo, perturbador o injusto...",
+    image: "/publicaciones/blackout.png",
+    href: "https://ethic.es/2024/07/exceso-de-blackout/",
+    source: "Ethic",
+  },
+  {
+    title: "¿Puede la matemática ayudarnos a conocer mejor el universo?",
+    author: "Santiago Jiménez Londoño",
+    excerpt: "Una reflexión sobre cómo la búsqueda matemática, al igual que la filosófica, nos acerca a una comprensión más profunda del universo y sus misterios.",
+    image: "/publicaciones/matematica.png",
+    href: "https://alponiente.com/puede-la-matematica-ayudarnos-a-conocer-mejor-el-universo/",
+    source: "Al Poniente",
+  },
 ];
 
 const SOCIALS = [
@@ -1190,6 +1218,68 @@ function MetricsBar() {
   );
 }
 
+/* ═══════════════════════ PUBLICACIONES ═══════════════════════ */
+
+function Publicaciones() {
+  const reveal = useReveal();
+
+  return (
+    <section id="publicaciones" className="py-24 md:py-36 px-6">
+      <div ref={reveal.ref} className={`max-w-6xl mx-auto transition-all duration-700 ${reveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <SectionHeader>PUBLICACIONES</SectionHeader>
+
+        <p className="font-[family-name:var(--font-geist-mono)] text-sm text-[var(--gray-light)] max-w-2xl mt-6 mb-16 leading-relaxed">
+          Reflexiones y ensayos de nuestro equipo publicados en medios reconocidos.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {PUBLICATIONS.map((pub) => (
+            <a
+              key={pub.title}
+              href={pub.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block"
+            >
+              <AsciiFrame>
+                <div className="overflow-hidden">
+                  <div className="aspect-[16/10] overflow-hidden">
+                    <img
+                      src={pub.image}
+                      alt={pub.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.3em] text-[var(--gray)] uppercase">
+                        {pub.source}
+                      </span>
+                      <span className="font-[family-name:var(--font-geist-mono)] text-[10px] text-[var(--gray)] opacity-40">
+                        ↗
+                      </span>
+                    </div>
+                    <h4 className="font-[family-name:var(--font-serif)] text-base text-[var(--foreground)] mb-2 group-hover:text-[var(--accent)] transition-colors duration-300 leading-snug">
+                      {pub.title}
+                    </h4>
+                    <p className="font-[family-name:var(--font-geist-mono)] text-[11px] text-[var(--gray-light)] leading-relaxed mb-3 line-clamp-3">
+                      {pub.excerpt}
+                    </p>
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] text-[var(--gray)] italic">
+                      — {pub.author}
+                    </span>
+                  </div>
+                </div>
+              </AsciiFrame>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ═══════════════════════ TESTIMONIOS ═══════════════════════ */
 
 function Testimonios() {
@@ -1416,6 +1506,8 @@ export default function Home() {
       <TerminalDivider variant={3} />
       <Servicios />
       <TerminalDivider variant={4} />
+      <Publicaciones />
+      <TerminalDivider variant={0} />
       <Testimonios />
       <ProximoEvento />
       <Newsletter />
