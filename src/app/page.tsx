@@ -446,100 +446,94 @@ function Navbar() {
 /* ═══════════════════════ HERO ═══════════════════════ */
 
 function Hero() {
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    const t = setTimeout(() => setLoaded(true), 300);
-    return () => clearTimeout(t);
-  }, []);
-
   return (
-    <section id="inicio" className="relative h-screen w-full overflow-hidden bg-[#111]">
+    <section id="inicio" className="relative h-screen w-full overflow-hidden bg-[#1c1917]">
+      {/* Video background — warm, no grayscale */}
       <video
         autoPlay
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="auto"
+        poster="/hero-poster.jpg"
         aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover z-0"
-        style={{ filter: "brightness(0.5) contrast(1.15) grayscale(0.3)" }}
+        style={{ filter: "brightness(0.55) contrast(1.1)" }}
         src="/hero-video.mp4"
       />
+
+      {/* Gradient overlay — warm tones, seamless transition to background */}
       <div
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(17,17,17,0.3) 0%, rgba(17,17,17,0.05) 30%, rgba(17,17,17,0.5) 65%, var(--background) 100%)",
+            "linear-gradient(to bottom, rgba(28,25,23,0.25) 0%, rgba(28,25,23,0.05) 25%, rgba(28,25,23,0.35) 55%, rgba(28,25,23,0.75) 80%, var(--background) 100%)",
         }}
       />
 
-      <div className="relative z-[2] h-full flex flex-col justify-end pb-20 md:pb-28 px-6 md:px-16 lg:px-24">
-        {/* Heading */}
-        <h1
-          className={`font-[family-name:var(--font-serif)] text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white leading-[0.9] tracking-tight mb-8 transition-all duration-1000 delay-200 ${
-            loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          AÚN
-          <br />
-          <span className="text-white/70">HUMANOS</span>
+      {/* Content — positioned at bottom-center with breathing room */}
+      <div className="relative z-[2] h-full flex flex-col justify-end pb-24 md:pb-32 px-6 md:px-16 lg:px-24">
+        {/* Heading — two-line with accent line between */}
+        <h1 className="font-[family-name:var(--font-serif)] font-bold leading-[0.9] tracking-tight mb-6">
+          <span className="hero-title block text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-white">
+            AÚN
+          </span>
+          <span className="hero-title-secondary block text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-white/85">
+            HUMANOS
+          </span>
         </h1>
 
-        {/* Subtitle */}
-        <p
-          className={`text-sm md:text-base leading-relaxed text-white/60 max-w-2xl mb-10 transition-all duration-1000 delay-500 ${
-            loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          }`}
-        >
+        {/* Accent line — terracotta, expands from left */}
+        <div className="hero-line w-20 md:w-28 h-[3px] bg-[var(--accent)] mb-8 rounded-full" />
+
+        {/* Subtitle — larger, more legible */}
+        <p className="hero-subtitle text-base md:text-lg leading-relaxed text-white/80 max-w-2xl mb-8">
           Acompañamos a personas y organizaciones a navegar la era
-          tecnológica sin perder lo esencialmente humano. Talleres, retiros,
-          consultoría y certificación en humanismo digital.
-          <span className="cursor-blink ml-1 text-white/50">▊</span>
+          tecnológica sin perder lo esencialmente humano.
+          <span className="cursor-blink ml-1 text-[var(--accent)]" aria-hidden="true">|</span>
         </p>
 
-        {/* Services tagline */}
-        <div
-          className={`flex flex-wrap gap-4 mb-10 font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] text-white/30 uppercase transition-all duration-1000 delay-500 ${
-            loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
-        >
+        {/* Service tags — legible, with accent borders */}
+        <div className="hero-tags flex flex-wrap gap-3 mb-10">
           {["Talleres", "Retiros", "Consultoría", "Certificación"].map((s) => (
-            <span key={s} className="border border-white/15 px-3 py-1 rounded">{s}</span>
+            <span
+              key={s}
+              className="font-[family-name:var(--font-geist-mono)] text-[11px] md:text-xs tracking-[0.1em] uppercase text-white/60 border border-white/25 px-3 py-1.5 rounded"
+            >
+              {s}
+            </span>
           ))}
         </div>
 
-        {/* CTA */}
-        <div
-          className={`flex flex-wrap items-center gap-6 transition-all duration-1000 delay-700 ${
-            loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
-        >
+        {/* CTA — solid primary, visible secondary */}
+        <div className="hero-cta flex flex-wrap items-center gap-5">
           <a
             href="#somos"
-            className="group font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.2em] uppercase border border-white/30 hover:border-white text-white hover:bg-white hover:text-[#111] px-8 py-4 rounded-lg transition-all duration-500"
+            className="font-[family-name:var(--font-geist-mono)] text-xs md:text-sm tracking-[0.15em] uppercase bg-[var(--accent)] hover:bg-[var(--accent-light)] text-white px-8 py-4 rounded-lg transition-all duration-400 hover:shadow-lg hover:shadow-[var(--accent)]/20"
           >
-            Explorar movimiento
+            Conoce qué hacemos
           </a>
           <a
             href="#contacto"
-            className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] uppercase text-white/50 hover:text-white transition-colors"
+            className="font-[family-name:var(--font-geist-mono)] text-xs md:text-sm tracking-[0.1em] uppercase text-white/70 hover:text-white transition-colors duration-300"
           >
             Contactar →
           </a>
         </div>
 
-        {/* Scroll indicator */}
-        <div
-          className={`mt-12 flex items-center gap-3 transition-all duration-1000 delay-1000 ${
-            loaded ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <span className="text-white/30"><ScrollChevron /></span>
-          <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] text-white/30 uppercase">
-            Scroll
-          </span>
+        {/* Scroll indicator — subtle but visible */}
+        <div className="hero-scroll mt-14 flex items-center gap-2">
+          <span className="text-white/50"><ScrollChevron /></span>
         </div>
+      </div>
+
+      {/* Social proof bar — anchored at bottom-right */}
+      <div className="hero-scroll absolute bottom-28 md:bottom-32 right-6 md:right-16 z-[2] hidden md:flex items-center gap-6 font-[family-name:var(--font-geist-mono)] text-[11px] tracking-[0.1em] text-white/40">
+        <span>500+ personas</span>
+        <span className="w-px h-3 bg-white/20" />
+        <span>12+ empresas</span>
+        <span className="w-px h-3 bg-white/20" />
+        <span>3+ años</span>
       </div>
     </section>
   );
