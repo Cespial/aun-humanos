@@ -379,7 +379,9 @@ function Navbar() {
       <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between h-16 md:h-20">
         <a
           href="#inicio"
-          className="font-[family-name:var(--font-geist-mono)] text-sm md:text-base tracking-[0.2em] text-[var(--foreground)] hover:text-[var(--accent)] transition-colors"
+          className={`font-[family-name:var(--font-geist-mono)] text-sm md:text-base tracking-[0.2em] transition-colors ${
+            scrolled ? "text-[var(--foreground)] hover:text-[var(--accent)]" : "text-white hover:text-white/70"
+          }`}
         >
           AÚN HUMANOS
         </a>
@@ -392,7 +394,11 @@ function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] uppercase transition-colors duration-300 relative ${
-                  isActive ? "text-[var(--accent)]" : "text-[var(--gray-light)] hover:text-[var(--accent)]"
+                  isActive
+                    ? "text-[var(--accent)]"
+                    : scrolled
+                      ? "text-[var(--gray-light)] hover:text-[var(--accent)]"
+                      : "text-white/70 hover:text-white"
                 }`}
               >
                 {link.label}
@@ -410,9 +416,9 @@ function Navbar() {
           aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={menuOpen}
         >
-          <span className={`block w-6 h-[2px] bg-[var(--foreground)] transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-[6px]" : ""}`} />
-          <span className={`block w-6 h-[2px] bg-[var(--foreground)] transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-[2px] bg-[var(--foreground)] transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-[6px]" : ""}`} />
+          <span className={`block w-6 h-[2px] transition-all duration-300 ${scrolled ? "bg-[var(--foreground)]" : "bg-white"} ${menuOpen ? "rotate-45 translate-y-[6px]" : ""}`} />
+          <span className={`block w-6 h-[2px] transition-all duration-300 ${scrolled ? "bg-[var(--foreground)]" : "bg-white"} ${menuOpen ? "opacity-0" : ""}`} />
+          <span className={`block w-6 h-[2px] transition-all duration-300 ${scrolled ? "bg-[var(--foreground)]" : "bg-white"} ${menuOpen ? "-rotate-45 -translate-y-[6px]" : ""}`} />
         </button>
       </div>
 
@@ -498,7 +504,7 @@ function Hero() {
           {["Talleres", "Retiros", "Consultoría", "Certificación"].map((s) => (
             <span
               key={s}
-              className="font-[family-name:var(--font-geist-mono)] text-[11px] md:text-xs tracking-[0.1em] uppercase text-white/60 border border-white/25 px-3 py-1.5 rounded"
+              className="font-[family-name:var(--font-geist-mono)] text-[11px] md:text-xs tracking-[0.1em] uppercase text-white/75 border border-white/30 px-3 py-1.5 rounded"
             >
               {s}
             </span>
@@ -515,7 +521,7 @@ function Hero() {
           </a>
           <a
             href="#contacto"
-            className="font-[family-name:var(--font-geist-mono)] text-xs md:text-sm tracking-[0.1em] uppercase text-white/70 hover:text-white transition-colors duration-300"
+            className="font-[family-name:var(--font-geist-mono)] text-xs md:text-sm tracking-[0.1em] uppercase text-white/80 hover:text-white transition-colors duration-300"
           >
             Contactar →
           </a>
@@ -523,12 +529,12 @@ function Hero() {
 
         {/* Scroll indicator — subtle but visible */}
         <div className="hero-scroll mt-14 flex items-center gap-2">
-          <span className="text-white/50"><ScrollChevron /></span>
+          <span className="text-white/60"><ScrollChevron /></span>
         </div>
       </div>
 
       {/* Social proof bar — anchored at bottom-right */}
-      <div className="hero-scroll absolute bottom-28 md:bottom-32 right-6 md:right-16 z-[2] hidden md:flex items-center gap-6 font-[family-name:var(--font-geist-mono)] text-[11px] tracking-[0.1em] text-white/40">
+      <div className="hero-scroll absolute bottom-28 md:bottom-32 right-6 md:right-16 z-[2] hidden md:flex items-center gap-6 font-[family-name:var(--font-geist-mono)] text-[11px] tracking-[0.1em] text-white/55">
         <span>500+ personas</span>
         <span className="w-px h-3 bg-white/20" />
         <span>12+ empresas</span>
@@ -712,7 +718,7 @@ function TrianguloVital() {
                   </text>
 
                   {/* Center label */}
-                  <text x="200" y="290" textAnchor="middle" fill="var(--foreground)" fontSize="9" fontFamily="monospace" letterSpacing="0.3em" opacity="0.5">
+                  <text x="200" y="290" textAnchor="middle" fill="var(--foreground)" fontSize="11" fontFamily="monospace" letterSpacing="0.3em" opacity="0.5">
                     ESPIRITUAL
                   </text>
                 </svg>
@@ -825,7 +831,7 @@ function HumanismoDigital() {
             {PRINCIPLES.map((principle, i) => (
               <div
                 key={i}
-                className="group flex gap-4 md:gap-6 py-5 md:py-6 border-b border-[var(--border)]/30 hover:bg-[var(--accent)]/[0.02] hover:pl-2 transition-all duration-300"
+                className="group flex gap-4 md:gap-6 py-5 md:py-6 border-b border-[var(--border)]/30 hover:bg-[var(--accent)]/[0.02] hover:translate-x-1 transition-all duration-300"
               >
                 <span className="font-[family-name:var(--font-geist-mono)] text-sm md:text-base text-[var(--accent)] font-bold min-w-[2.5rem] text-right tabular-nums">
                   {String(i + 1).padStart(2, "0")}
