@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Playfair_Display } from "next/font/google";
+import { Geist_Mono, Playfair_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
+
+const sans = DM_Sans({
+  variable: "--font-sans",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+});
 
 const mono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -33,7 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${mono.variable} ${serif.variable} antialiased`}>
+      <body className={`${sans.variable} ${mono.variable} ${serif.variable} antialiased`}>
         <div className="crt-overlay" />
         {children}
       </body>

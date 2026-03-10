@@ -174,10 +174,10 @@ function ServiceIcon({ type, className = "" }: { type: string; className?: strin
 
 function SealSVG() {
   return (
-    <svg viewBox="0 0 200 200" fill="none" className="w-40 h-40 md:w-48 md:h-48 svg-glow" role="img" aria-label="Sello de Humanismo Digital">
-      <circle cx="100" cy="100" r="90" stroke="var(--accent)" strokeWidth="0.5" opacity="0.2" />
-      <circle cx="100" cy="100" r="80" stroke="var(--accent)" strokeWidth="1" opacity="0.35" />
-      <circle cx="100" cy="100" r="70" stroke="var(--accent)" strokeWidth="0.3" opacity="0.25" strokeDasharray="4 6" />
+    <svg viewBox="0 0 200 200" fill="none" className="w-40 h-40 md:w-48 md:h-48" role="img" aria-label="Sello de Humanismo Digital">
+      <circle cx="100" cy="100" r="90" stroke="var(--foreground)" strokeWidth="0.5" opacity="0.2" />
+      <circle cx="100" cy="100" r="80" stroke="var(--foreground)" strokeWidth="1" opacity="0.35" />
+      <circle cx="100" cy="100" r="70" stroke="var(--foreground)" strokeWidth="0.3" opacity="0.25" strokeDasharray="4 6" />
       {/* Outer notches */}
       {Array.from({ length: 36 }).map((_, i) => {
         const angle = (i * 10 * Math.PI) / 180;
@@ -186,13 +186,13 @@ function SealSVG() {
         const x2 = 100 + 88 * Math.cos(angle);
         const y2 = 100 + 88 * Math.sin(angle);
         return (
-          <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="var(--accent)" strokeWidth="0.5" opacity="0.35" />
+          <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="var(--foreground)" strokeWidth="0.5" opacity="0.35" />
         );
       })}
       {/* Inner diamond */}
-      <path d="M100 55 L135 100 L100 145 L65 100 Z" stroke="var(--accent)" strokeWidth="0.8" opacity="0.4" fill="var(--accent)" fillOpacity="0.04" />
+      <path d="M100 55 L135 100 L100 145 L65 100 Z" stroke="var(--foreground)" strokeWidth="0.8" opacity="0.4" fill="var(--accent)" fillOpacity="0.06" />
       {/* Center H */}
-      <text x="100" y="95" textAnchor="middle" fill="var(--accent)" fontSize="22" fontFamily="serif" opacity="0.7" dominantBaseline="middle">
+      <text x="100" y="95" textAnchor="middle" fill="var(--foreground)" fontSize="22" fontFamily="serif" opacity="0.7" dominantBaseline="middle">
         H
       </text>
       {/* Circular text top */}
@@ -200,12 +200,12 @@ function SealSVG() {
         <path id="topArc" d="M30,100 a70,70 0 0,1 140,0" />
         <path id="bottomArc" d="M30,100 a70,70 0 0,0 140,0" />
       </defs>
-      <text fill="var(--accent)" fontSize="7" fontFamily="monospace" letterSpacing="0.3em" opacity="0.5">
+      <text fill="var(--foreground)" fontSize="7" fontFamily="monospace" letterSpacing="0.3em" opacity="0.5">
         <textPath href="#topArc" startOffset="50%" textAnchor="middle">
           SELLO DE HUMANISMO
         </textPath>
       </text>
-      <text fill="var(--accent)" fontSize="7" fontFamily="monospace" letterSpacing="0.3em" opacity="0.5">
+      <text fill="var(--foreground)" fontSize="7" fontFamily="monospace" letterSpacing="0.3em" opacity="0.5">
         <textPath href="#bottomArc" startOffset="50%" textAnchor="middle">
           DIGITAL CERTIFICADO
         </textPath>
@@ -230,12 +230,12 @@ function ScrollChevron() {
 function BrandMark() {
   return (
     <svg viewBox="0 0 120 120" fill="none" className="w-24 h-24 md:w-32 md:h-32 opacity-[0.12]" aria-hidden="true">
-      <circle cx="60" cy="60" r="55" stroke="var(--accent)" strokeWidth="0.5" />
-      <circle cx="60" cy="60" r="45" stroke="var(--accent)" strokeWidth="0.3" strokeDasharray="3 5" />
-      <text x="60" y="55" textAnchor="middle" fill="var(--accent)" fontSize="14" fontFamily="monospace" letterSpacing="0.15em" dominantBaseline="middle">
+      <circle cx="60" cy="60" r="55" stroke="var(--foreground)" strokeWidth="0.5" />
+      <circle cx="60" cy="60" r="45" stroke="var(--foreground)" strokeWidth="0.3" strokeDasharray="3 5" />
+      <text x="60" y="55" textAnchor="middle" fill="var(--foreground)" fontSize="14" fontFamily="monospace" letterSpacing="0.15em" dominantBaseline="middle">
         AÚN
       </text>
-      <text x="60" y="72" textAnchor="middle" fill="var(--accent)" fontSize="10" fontFamily="monospace" letterSpacing="0.25em" dominantBaseline="middle">
+      <text x="60" y="72" textAnchor="middle" fill="var(--foreground)" fontSize="10" fontFamily="monospace" letterSpacing="0.25em" dominantBaseline="middle">
         HUMANOS
       </text>
     </svg>
@@ -296,38 +296,23 @@ function useActiveSection() {
 
 function SectionHeader({ children }: { children: string }) {
   return (
-    <h2 className="font-[family-name:var(--font-geist-mono)] text-sm tracking-[0.3em] uppercase text-[var(--accent)] mb-2">
-      <span className="opacity-50">{">"} </span>
+    <div className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] uppercase text-[var(--accent)] mb-2">
       {children}
-      <span className="cursor-blink ml-1 text-[var(--accent)]" aria-hidden="true">_</span>
-    </h2>
-  );
-}
-
-function TerminalDivider({ variant = 0 }: { variant?: number }) {
-  const symbols = ["◆ ◆ ◆", "— · —", "═══", "▸ ▸ ▸", "◇ ◈ ◇"];
-  return (
-    <div className="my-16 md:my-24 flex items-center gap-4 opacity-20 px-6 md:px-16 lg:px-24" role="separator" aria-hidden="true">
-      <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
-      <span className="font-[family-name:var(--font-geist-mono)] text-[10px] text-[var(--accent)] tracking-[0.5em]">
-        {symbols[variant % symbols.length]}
-      </span>
-      <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
     </div>
   );
 }
 
-function AsciiFrame({ children, className = "", highlight = false }: { children: React.ReactNode; className?: string; highlight?: boolean }) {
+function SectionDivider() {
   return (
-    <div className={`relative ${className}`}>
-      <span className={`absolute -top-1 -left-1 font-[family-name:var(--font-geist-mono)] text-xs ${highlight ? "text-[var(--accent)] opacity-60" : "text-[var(--gray)] opacity-40"}`}>┌</span>
-      <span className={`absolute -top-1 -right-1 font-[family-name:var(--font-geist-mono)] text-xs ${highlight ? "text-[var(--accent)] opacity-60" : "text-[var(--gray)] opacity-40"}`}>┐</span>
-      <span className={`absolute -bottom-1 -left-1 font-[family-name:var(--font-geist-mono)] text-xs ${highlight ? "text-[var(--accent)] opacity-60" : "text-[var(--gray)] opacity-40"}`}>└</span>
-      <span className={`absolute -bottom-1 -right-1 font-[family-name:var(--font-geist-mono)] text-xs ${highlight ? "text-[var(--accent)] opacity-60" : "text-[var(--gray)] opacity-40"}`}>┘</span>
-      <div className={`absolute top-0 left-3 right-3 h-px ${highlight ? "bg-[var(--accent)] opacity-30" : "bg-[var(--border)] opacity-40"}`} />
-      <div className={`absolute bottom-0 left-3 right-3 h-px ${highlight ? "bg-[var(--accent)] opacity-30" : "bg-[var(--border)] opacity-40"}`} />
-      <div className={`absolute left-0 top-3 bottom-3 w-px ${highlight ? "bg-[var(--accent)] opacity-30" : "bg-[var(--border)] opacity-40"}`} />
-      <div className={`absolute right-0 top-3 bottom-3 w-px ${highlight ? "bg-[var(--accent)] opacity-30" : "bg-[var(--border)] opacity-40"}`} />
+    <div className="my-16 md:my-24 px-6 md:px-16 lg:px-24">
+      <div className="max-w-6xl mx-auto h-px bg-[var(--border)]" />
+    </div>
+  );
+}
+
+function Card({ children, className = "", highlight = false }: { children: React.ReactNode; className?: string; highlight?: boolean }) {
+  return (
+    <div className={`border ${highlight ? "border-[var(--accent)]/30" : "border-[var(--border)]"} rounded-lg overflow-hidden ${className}`}>
       {children}
     </div>
   );
@@ -394,9 +379,9 @@ function Navbar() {
       <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between h-16 md:h-20">
         <a
           href="#inicio"
-          className="font-[family-name:var(--font-geist-mono)] text-sm md:text-base tracking-[0.2em] text-[var(--accent)] hover:text-[var(--foreground)] transition-colors text-glow"
+          className="font-[family-name:var(--font-geist-mono)] text-sm md:text-base tracking-[0.2em] text-[var(--foreground)] hover:text-[var(--accent)] transition-colors"
         >
-          AÚN_HUMANOS
+          AÚN HUMANOS
         </a>
 
         <div className="hidden md:flex items-center gap-8">
@@ -406,7 +391,7 @@ function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className={`font-[family-name:var(--font-geist-mono)] text-[11px] tracking-[0.15em] uppercase transition-colors duration-300 relative ${
+                className={`font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] uppercase transition-colors duration-300 relative ${
                   isActive ? "text-[var(--accent)]" : "text-[var(--gray-light)] hover:text-[var(--accent)]"
                 }`}
               >
@@ -425,9 +410,9 @@ function Navbar() {
           aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={menuOpen}
         >
-          <span className={`block w-6 h-[2px] bg-[var(--accent)] transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-[6px]" : ""}`} />
-          <span className={`block w-6 h-[2px] bg-[var(--accent)] transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-[2px] bg-[var(--accent)] transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-[6px]" : ""}`} />
+          <span className={`block w-6 h-[2px] bg-[var(--foreground)] transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-[6px]" : ""}`} />
+          <span className={`block w-6 h-[2px] bg-[var(--foreground)] transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
+          <span className={`block w-6 h-[2px] bg-[var(--foreground)] transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-[6px]" : ""}`} />
         </button>
       </div>
 
@@ -448,7 +433,6 @@ function Navbar() {
                   isActive ? "text-[var(--accent)]" : "text-[var(--gray-light)] hover:text-[var(--accent)]"
                 }`}
               >
-                <span className="text-[var(--gray)] mr-2">{">"}</span>
                 {link.label}
               </a>
             );
@@ -491,16 +475,6 @@ function Hero() {
       />
 
       <div className="relative z-[2] h-full flex flex-col justify-end pb-20 md:pb-28 px-6 md:px-16 lg:px-24">
-        {/* Status line */}
-        <div
-          className={`font-[family-name:var(--font-geist-mono)] text-[10px] md:text-xs tracking-[0.4em] text-white/40 mb-6 transition-all duration-1000 ${
-            loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
-        >
-          <span className="text-green-400 mr-2">●</span>
-          SISTEMA ACTIVO — TRANSMISIÓN EN CURSO
-        </div>
-
         {/* Heading */}
         <h1
           className={`font-[family-name:var(--font-serif)] text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white leading-[0.9] tracking-tight mb-8 transition-all duration-1000 delay-200 ${
@@ -514,7 +488,7 @@ function Hero() {
 
         {/* Subtitle */}
         <p
-          className={`font-[family-name:var(--font-geist-mono)] text-xs md:text-sm leading-relaxed text-white/60 max-w-2xl mb-10 transition-all duration-1000 delay-500 ${
+          className={`text-sm md:text-base leading-relaxed text-white/60 max-w-2xl mb-10 transition-all duration-1000 delay-500 ${
             loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
@@ -531,7 +505,7 @@ function Hero() {
           }`}
         >
           {["Talleres", "Retiros", "Consultoría", "Certificación"].map((s) => (
-            <span key={s} className="border border-white/15 px-3 py-1">{s}</span>
+            <span key={s} className="border border-white/15 px-3 py-1 rounded">{s}</span>
           ))}
         </div>
 
@@ -543,10 +517,9 @@ function Hero() {
         >
           <a
             href="#somos"
-            className="group font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.2em] uppercase border border-white/30 hover:border-white text-white hover:bg-white hover:text-[#111] px-8 py-4 transition-all duration-500"
+            className="group font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.2em] uppercase border border-white/30 hover:border-white text-white hover:bg-white hover:text-[#111] px-8 py-4 rounded-lg transition-all duration-500"
           >
-            <span className="mr-2 group-hover:mr-3 transition-all">{">"}</span>
-            EXPLORAR_MOVIMIENTO
+            Explorar movimiento
           </a>
           <a
             href="#contacto"
@@ -563,17 +536,10 @@ function Hero() {
           }`}
         >
           <span className="text-white/30"><ScrollChevron /></span>
-          <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-white/30 uppercase">
+          <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] text-white/30 uppercase">
             Scroll
           </span>
         </div>
-      </div>
-
-      {/* Corner decoration */}
-      <div className="absolute top-24 right-6 md:right-16 font-[family-name:var(--font-geist-mono)] text-[10px] text-white/20 leading-tight text-right z-[2]">
-        <div>LAT 6.2518</div>
-        <div>LON -75.5636</div>
-        <div className="mt-1">MEDELLÍN.CO</div>
       </div>
     </section>
   );
@@ -586,7 +552,7 @@ function Somos() {
   const gridReveal = useReveal(0.1);
 
   return (
-    <section id="somos" className="relative px-6 md:px-16 lg:px-24 py-24 md:py-36 noise-bg bg-[var(--surface-alt)]">
+    <section id="somos" className="relative px-6 md:px-16 lg:px-24 py-24 md:py-36 bg-[var(--surface-alt)]">
       <div className="max-w-6xl mx-auto relative z-[1]">
         <div
           ref={reveal.ref}
@@ -607,7 +573,7 @@ function Somos() {
             </div>
 
             <div className="flex flex-col justify-center">
-              <p className="font-[family-name:var(--font-geist-mono)] text-sm leading-[1.9] text-[var(--gray-light)]">
+              <p className="text-sm leading-[1.9] text-[var(--gray-light)]">
                 Fundado por{" "}
                 <span className="text-[var(--foreground)]">Felipe Jaramillo Vélez</span>
                 , filósofo, conferencista y consultor con más de 20 años de
@@ -616,7 +582,7 @@ function Somos() {
                 Colombia y Latinoamérica en la integración consciente de la
                 tecnología.
               </p>
-              <p className="font-[family-name:var(--font-geist-mono)] text-sm leading-[1.9] text-[var(--gray-light)] mt-6">
+              <p className="text-sm leading-[1.9] text-[var(--gray-light)] mt-6">
                 Somos un colectivo de doctores, magísteres y profesionales
                 de diversas disciplinas — filosofía, ingeniería, psicología,
                 educación — unidos por una convicción:{" "}
@@ -633,31 +599,31 @@ function Somos() {
           ref={gridReveal.ref}
           className="mt-20 md:mt-28"
         >
-          <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gray)] mb-8 uppercase">
-            // Equipo fundador
+          <div className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] text-[var(--gray)] mb-8 uppercase">
+            Equipo fundador
           </div>
 
           <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger-children ${gridReveal.visible ? "is-visible" : ""}`}>
             {TEAM.map((member, i) => (
-              <AsciiFrame key={member.name} highlight={i === 0}>
+              <Card key={member.name} highlight={i === 0}>
                 <div className="p-6 md:p-8 group hover:bg-[var(--accent)]/[0.03] transition-colors duration-500">
                   <MemberPhoto src={member.photo} name={member.name} isFounder={i === 0} />
                   <div className="flex items-start justify-between mb-3">
-                    <span className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.3em] text-[var(--gray)] bg-[var(--accent)]/[0.06] px-2 py-1">
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] text-[var(--gray)] bg-[var(--accent)]/[0.06] px-2 py-1 rounded">
                       {member.tag}
                     </span>
-                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] text-[var(--gray)] opacity-40">
+                    <span className="font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray)] opacity-40">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
                   <h4 className="font-[family-name:var(--font-serif)] text-lg text-[var(--foreground)] mb-2 group-hover:text-[var(--accent)] transition-colors duration-300">
                     {member.name}
                   </h4>
-                  <p className="font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray-light)]">
+                  <p className="text-xs text-[var(--gray-light)]">
                     {member.role}
                   </p>
                 </div>
-              </AsciiFrame>
+              </Card>
             ))}
           </div>
         </div>
@@ -680,7 +646,7 @@ function TrianguloVital() {
             reveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <SectionHeader>TRIÁNGULO_VITAL</SectionHeader>
+          <SectionHeader>TRIÁNGULO VITAL</SectionHeader>
 
           <div className="mt-12 grid md:grid-cols-2 gap-16 md:gap-24 items-center">
             {/* Enhanced SVG Triangle */}
@@ -730,7 +696,7 @@ function TrianguloVital() {
                   <circle cx="200" cy="230" r="22" stroke="var(--accent)" strokeWidth="0.3" opacity="0.25" strokeDasharray="2 3" />
                   <circle cx="200" cy="230" r="5" fill="var(--accent)" opacity="0.5" />
 
-                  {/* Vertex nodes — animated via CSS */}
+                  {/* Vertex nodes */}
                   <circle cx="200" cy="50" r="6" fill="var(--accent)" opacity="0.7" />
                   <circle cx="375" cy="350" r="6" fill="var(--accent)" opacity="0.7" />
                   <circle cx="25" cy="350" r="6" fill="var(--accent)" opacity="0.7" />
@@ -767,7 +733,7 @@ function TrianguloVital() {
                 <span className="text-[var(--accent)]">del ser Humano.</span>
               </h3>
 
-              <p className="font-[family-name:var(--font-geist-mono)] text-sm leading-[1.9] text-[var(--gray-light)] mb-8">
+              <p className="text-sm leading-[1.9] text-[var(--gray-light)] mb-8">
                 Triángulo Vital es una filosofía de vida que busca el equilibrio
                 y la armonía del ser Humano a través de una reconfiguración
                 permanente que permita hacer consciente la relación con el yo,
@@ -775,12 +741,12 @@ function TrianguloVital() {
                 elementos, la relación fundamental con lo espiritual.
               </p>
 
-              <AsciiFrame highlight>
+              <Card highlight>
                 <div className="p-6 md:p-8">
-                  <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--accent)] mb-4 uppercase">
-                    // Retiro de inmersión humana
+                  <div className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] text-[var(--accent)] mb-4 uppercase">
+                    Retiro de inmersión humana
                   </div>
-                  <p className="font-[family-name:var(--font-geist-mono)] text-xs leading-[1.8] text-[var(--gray-light)] mb-6">
+                  <p className="text-xs leading-[1.8] text-[var(--gray-light)] mb-6">
                     Un día completo de desconexión tecnológica y reconexión
                     humana. Metodología que parte de la reflexión y la
                     casuística para llegar a reconocerse, reafirmando lo que
@@ -795,10 +761,10 @@ function TrianguloVital() {
                       { label: "Incluye", value: "Material, alimentación, certificado" },
                     ].map((item) => (
                       <div key={item.label}>
-                        <div className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.2em] text-[var(--gray)] uppercase mb-1">
+                        <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] text-[var(--gray)] uppercase mb-1">
                           {item.label}
                         </div>
-                        <div className="font-[family-name:var(--font-geist-mono)] text-xs text-[var(--foreground)]">
+                        <div className="text-xs text-[var(--foreground)]">
                           {item.value}
                         </div>
                       </div>
@@ -809,12 +775,12 @@ function TrianguloVital() {
                     href="https://wa.me/573001234567?text=Quiero%20información%20sobre%20el%20retiro%20Triángulo%20Vital"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.2em] text-[var(--accent)] hover:text-[var(--foreground)] transition-colors uppercase border border-[var(--accent)]/30 hover:border-[var(--accent)] px-4 py-2"
+                    className="inline-block font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] text-[var(--accent)] hover:text-[var(--foreground)] transition-colors uppercase border border-[var(--accent)]/30 hover:border-[var(--accent)] px-4 py-2 rounded-lg"
                   >
-                    {">"} Reservar cupo por WhatsApp_
+                    Reservar cupo por WhatsApp
                   </a>
                 </div>
-              </AsciiFrame>
+              </Card>
             </div>
           </div>
         </div>
@@ -830,16 +796,7 @@ function HumanismoDigital() {
   const listReveal = useReveal(0.05);
 
   return (
-    <section id="humanismo" className="relative px-6 md:px-16 lg:px-24 py-24 md:py-36 noise-bg bg-[var(--surface-alt)]">
-      <div className="absolute left-4 top-1/2 -translate-y-1/2 hidden xl:block">
-        <div
-          className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.5em] text-[var(--gray)] opacity-15 uppercase"
-          style={{ writingMode: "vertical-rl" }}
-        >
-          HUMANISMO · DIGITAL · ÉTICO · CONSCIENTE
-        </div>
-      </div>
-
+    <section id="humanismo" className="relative px-6 md:px-16 lg:px-24 py-24 md:py-36 bg-[var(--surface-alt)]">
       <div className="max-w-5xl mx-auto relative z-[1]">
         <div
           ref={reveal.ref}
@@ -847,21 +804,21 @@ function HumanismoDigital() {
             reveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <SectionHeader>HUMANISMO_DIGITAL</SectionHeader>
+          <SectionHeader>HUMANISMO DIGITAL</SectionHeader>
 
           <div className="mt-12 mb-16 text-center">
             <h3 className="font-[family-name:var(--font-serif)] text-4xl md:text-5xl lg:text-6xl text-[var(--foreground)] mb-4">
               Entender{" "}
-              <span className="text-[var(--accent)] text-glow">para actuar.</span>
+              <span className="text-[var(--accent)]">para actuar.</span>
             </h3>
-            <p className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.2em] text-[var(--gray-light)] mt-6 uppercase">
+            <p className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] text-[var(--gray-light)] mt-6 uppercase">
               Ideario Ético hacia un Humanismo Digital
             </p>
           </div>
 
           <div className="w-full h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent opacity-40 mb-12" />
 
-          <p className="font-[family-name:var(--font-geist-mono)] text-sm leading-[1.9] text-[var(--gray-light)] mb-16 max-w-3xl mx-auto text-center">
+          <p className="text-sm leading-[1.9] text-[var(--gray-light)] mb-16 max-w-3xl mx-auto text-center">
             Aceptar que la tecnología está ya entre nosotros y que viene
             transformando nuestra vida, no quiere decir que no se deba tener una
             reflexión permanente frente a los riesgos de deshumanización.
@@ -876,10 +833,10 @@ function HumanismoDigital() {
                 key={i}
                 className="group flex gap-4 md:gap-6 py-5 md:py-6 border-b border-[var(--border)]/30 hover:bg-[var(--accent)]/[0.02] hover:pl-2 transition-all duration-300"
               >
-                <span className="font-[family-name:var(--font-geist-mono)] text-sm md:text-base text-[var(--accent)] font-bold min-w-[2.5rem] text-right tabular-nums text-glow">
+                <span className="font-[family-name:var(--font-geist-mono)] text-sm md:text-base text-[var(--accent)] font-bold min-w-[2.5rem] text-right tabular-nums">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <p className="font-[family-name:var(--font-geist-mono)] text-xs md:text-sm leading-[1.8] text-[var(--gray-light)] group-hover:text-[var(--foreground)] transition-colors duration-300">
+                <p className="text-xs md:text-sm leading-[1.8] text-[var(--gray-light)] group-hover:text-[var(--foreground)] transition-colors duration-300">
                   {principle}
                 </p>
               </div>
@@ -891,7 +848,7 @@ function HumanismoDigital() {
             <div className="flex flex-col items-center gap-6">
               <SealSVG />
               <div className="text-center">
-                <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.4em] text-[var(--accent)] uppercase">
+                <div className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] text-[var(--accent)] uppercase">
                   Sello de Humanismo Digital
                 </div>
               </div>
@@ -903,7 +860,7 @@ function HumanismoDigital() {
                 <br />
                 <span className="text-[var(--accent)]">con lo humano.</span>
               </h4>
-              <p className="font-[family-name:var(--font-geist-mono)] text-xs leading-[1.8] text-[var(--gray-light)] mb-6">
+              <p className="text-xs leading-[1.8] text-[var(--gray-light)] mb-6">
                 El Sello de Humanismo Digital certifica que tu organización
                 opera bajo principios éticos frente a la tecnología. Es un
                 compromiso público con tus colaboradores y clientes.
@@ -918,7 +875,7 @@ function HumanismoDigital() {
                     <span className="font-[family-name:var(--font-geist-mono)] text-xs text-[var(--accent)] font-bold min-w-[1.5rem]">
                       {s.step}
                     </span>
-                    <span className="font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray-light)]">
+                    <span className="text-xs text-[var(--gray-light)]">
                       {s.text}
                     </span>
                   </div>
@@ -926,9 +883,9 @@ function HumanismoDigital() {
               </div>
               <a
                 href="#contacto"
-                className="inline-block font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.2em] text-[var(--accent)] hover:text-[var(--foreground)] transition-colors uppercase"
+                className="inline-block font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] text-[var(--accent)] hover:text-[var(--foreground)] transition-colors uppercase"
               >
-                {">"} Solicitar certificación_
+                Solicitar certificación →
               </a>
             </div>
           </div>
@@ -961,7 +918,7 @@ function Servicios() {
               <br />
               <span className="text-[var(--accent)]">seguir siendo humanos.</span>
             </h3>
-            <p className="font-[family-name:var(--font-geist-mono)] text-sm leading-[1.9] text-[var(--gray-light)] md:mt-3">
+            <p className="text-sm leading-[1.9] text-[var(--gray-light)] md:mt-3">
               Ofrecemos espacios y metodologías para que personas y
               organizaciones enfrenten los retos de la era tecnológica sin
               perder su esencia.
@@ -974,30 +931,27 @@ function Servicios() {
           ref={gridReveal.ref}
           className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 stagger-children ${gridReveal.visible ? "is-visible" : ""}`}
         >
-          {SERVICES.map((service, i) => (
+          {SERVICES.map((service) => (
             <div key={service.title} className="group relative">
-              <AsciiFrame>
+              <Card>
                 <div className="p-6 md:p-8 h-full hover:bg-[var(--accent)]/[0.03] transition-all duration-500">
                   <div className="flex items-start justify-between mb-6">
                     <ServiceIcon type={service.id} className="opacity-60 group-hover:opacity-100 transition-opacity" />
-                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] text-[var(--gray)] opacity-40">
-                      SRV.{String(i + 1).padStart(2, "0")}
-                    </span>
                   </div>
 
                   <h4 className="font-[family-name:var(--font-serif)] text-lg text-[var(--foreground)] mb-4 group-hover:text-[var(--accent)] transition-colors duration-300">
                     {service.title}
                   </h4>
 
-                  <p className="font-[family-name:var(--font-geist-mono)] text-xs leading-[1.8] text-[var(--gray-light)] mb-4">
+                  <p className="text-xs leading-[1.8] text-[var(--gray-light)] mb-4">
                     {service.desc}
                   </p>
 
                   <div className="flex flex-wrap gap-2 mb-2">
-                    <span className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.1em] text-[var(--accent)] bg-[var(--accent)]/[0.06] px-2 py-0.5">
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.1em] text-[var(--accent)] bg-[var(--accent)]/[0.06] px-2 py-0.5 rounded">
                       {service.format}
                     </span>
-                    <span className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.1em] text-[var(--gray)] bg-[var(--border)]/30 px-2 py-0.5">
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.1em] text-[var(--gray)] bg-[var(--border)]/30 px-2 py-0.5 rounded">
                       {service.audience}
                     </span>
                   </div>
@@ -1005,13 +959,12 @@ function Servicios() {
                   <a
                     href="#contacto"
                     aria-label={`Consultar sobre ${service.title}`}
-                    className="inline-block mt-6 font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.2em] text-[var(--gray)] group-hover:text-[var(--accent)] transition-colors uppercase"
+                    className="inline-block mt-6 font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] text-[var(--gray)] group-hover:text-[var(--accent)] transition-colors uppercase"
                   >
-                    {">"} Consultar
-                    <span className="cursor-blink ml-1">_</span>
+                    Consultar →
                   </a>
                 </div>
-              </AsciiFrame>
+              </Card>
             </div>
           ))}
         </div>
@@ -1034,7 +987,7 @@ function Contacto() {
   }, []);
 
   return (
-    <section id="contacto" className="relative px-6 md:px-16 lg:px-24 py-24 md:py-36 noise-bg bg-[var(--surface-alt)]">
+    <section id="contacto" className="relative px-6 md:px-16 lg:px-24 py-24 md:py-36 bg-[var(--surface-alt)]">
       <div className="max-w-4xl mx-auto relative z-[1]">
         <div
           ref={reveal.ref}
@@ -1052,31 +1005,29 @@ function Contacto() {
                 <span className="text-[var(--accent)]">conversación.</span>
               </h3>
 
-              <p className="font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray-light)] leading-[1.8] mb-10">
+              <p className="text-xs text-[var(--gray-light)] leading-[1.8] mb-10">
                 Escribe tu mensaje y conectaremos contigo para explorar cómo
                 podemos acompañarte.
               </p>
 
               {submitted ? (
                 <div className="py-12" role="status" aria-live="polite">
-                  <div className="font-[family-name:var(--font-geist-mono)] text-sm text-[var(--accent)] text-glow mb-2">
-                    {">"} Mensaje enviado correctamente.
+                  <div className="font-[family-name:var(--font-geist-mono)] text-sm text-[var(--accent)] mb-2">
+                    Mensaje enviado correctamente.
                   </div>
-                  <div className="font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray-light)]">
+                  <div className="text-xs text-[var(--gray-light)]">
                     Nos pondremos en contacto contigo pronto.
-                    <span className="cursor-blink ml-1 text-[var(--accent)]">_</span>
                   </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {[
-                    { id: "nombre", label: "nombre", type: "text" },
-                    { id: "email", label: "email", type: "email" },
+                    { id: "nombre", label: "Nombre", type: "text" },
+                    { id: "email", label: "Email", type: "email" },
                   ].map((field) => (
                     <div key={field.id} className="relative">
-                      <label htmlFor={field.id} className="flex items-center gap-2 font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray)] mb-2 cursor-pointer">
-                        <span className={`transition-colors ${focusedField === field.id ? "text-[var(--accent)]" : ""}`}>{">"}</span>
-                        <span>{field.label}:</span>
+                      <label htmlFor={field.id} className="block font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray)] mb-2 cursor-pointer">
+                        <span className={`transition-colors ${focusedField === field.id ? "text-[var(--accent)]" : ""}`}>{field.label}</span>
                       </label>
                       <input
                         type={field.type}
@@ -1085,16 +1036,15 @@ function Contacto() {
                         required
                         onFocus={() => setFocusedField(field.id)}
                         onBlur={() => setFocusedField(null)}
-                        className="w-full bg-transparent border-b border-[var(--border)]/20 focus:border-[var(--accent)] text-[var(--foreground)] font-[family-name:var(--font-geist-mono)] text-sm py-3 outline-none transition-colors placeholder:text-[var(--border)]"
-                        placeholder={`Ingresa tu ${field.label}...`}
+                        className="w-full bg-transparent border-b border-[var(--border)]/20 focus:border-[var(--accent)] text-[var(--foreground)] text-sm py-3 outline-none transition-colors placeholder:text-[var(--border)]"
+                        placeholder={`Ingresa tu ${field.label.toLowerCase()}...`}
                       />
                     </div>
                   ))}
 
                   <div className="relative">
-                    <label htmlFor="mensaje" className="flex items-center gap-2 font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray)] mb-2 cursor-pointer">
-                      <span className={`transition-colors ${focusedField === "mensaje" ? "text-[var(--accent)]" : ""}`}>{">"}</span>
-                      <span>mensaje:</span>
+                    <label htmlFor="mensaje" className="block font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray)] mb-2 cursor-pointer">
+                      <span className={`transition-colors ${focusedField === "mensaje" ? "text-[var(--accent)]" : ""}`}>Mensaje</span>
                     </label>
                     <textarea
                       id="mensaje"
@@ -1103,18 +1053,16 @@ function Contacto() {
                       required
                       onFocus={() => setFocusedField("mensaje")}
                       onBlur={() => setFocusedField(null)}
-                      className="w-full bg-transparent border-b border-[var(--border)]/20 focus:border-[var(--accent)] text-[var(--foreground)] font-[family-name:var(--font-geist-mono)] text-sm py-3 outline-none transition-colors resize-none placeholder:text-[var(--border)]"
+                      className="w-full bg-transparent border-b border-[var(--border)]/20 focus:border-[var(--accent)] text-[var(--foreground)] text-sm py-3 outline-none transition-colors resize-none placeholder:text-[var(--border)]"
                       placeholder="Escribe tu mensaje..."
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="group mt-4 font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.2em] uppercase border border-[var(--border)]/30 hover:border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-white px-8 py-4 transition-all duration-500"
+                    className="group mt-4 font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] uppercase border border-[var(--border)]/30 hover:border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-white px-8 py-4 rounded-lg transition-all duration-500"
                   >
-                    <span className="mr-2 group-hover:mr-3 transition-all">{">"}</span>
-                    ENVIAR_MENSAJE
-                    <span className="cursor-blink ml-1">_</span>
+                    Enviar mensaje
                   </button>
                 </form>
               )}
@@ -1124,8 +1072,8 @@ function Contacto() {
             <div className="flex flex-col gap-10">
               {/* Direct contact */}
               <div>
-                <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gray)] mb-6 uppercase">
-                  // Contacto directo
+                <div className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] text-[var(--gray)] mb-6 uppercase">
+                  Contacto directo
                 </div>
 
                 <div className="space-y-4">
@@ -1135,8 +1083,8 @@ function Contacto() {
                     rel="noopener noreferrer"
                     className="group flex items-center gap-4 py-3 border-b border-[var(--border)]/30 hover:border-[var(--accent)] transition-colors"
                   >
-                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[#25D366] w-8">WA</span>
-                    <span className="font-[family-name:var(--font-geist-mono)] text-sm text-[var(--gray-light)] group-hover:text-[var(--accent)] transition-colors">
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] text-[#25D366] w-8">WA</span>
+                    <span className="text-sm text-[var(--gray-light)] group-hover:text-[var(--accent)] transition-colors">
                       +57 300 123 4567
                     </span>
                   </a>
@@ -1144,14 +1092,14 @@ function Contacto() {
                     href="mailto:contacto@aunhumanos.com"
                     className="group flex items-center gap-4 py-3 border-b border-[var(--border)]/30 hover:border-[var(--accent)] transition-colors"
                   >
-                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gray)] w-8">@</span>
-                    <span className="font-[family-name:var(--font-geist-mono)] text-sm text-[var(--gray-light)] group-hover:text-[var(--accent)] transition-colors">
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] text-[var(--gray)] w-8">@</span>
+                    <span className="text-sm text-[var(--gray-light)] group-hover:text-[var(--accent)] transition-colors">
                       contacto@aunhumanos.com
                     </span>
                   </a>
                   <div className="flex items-center gap-4 py-3 border-b border-[var(--border)]/30">
-                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gray)] w-8">LOC</span>
-                    <span className="font-[family-name:var(--font-geist-mono)] text-sm text-[var(--gray-light)]">
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] text-[var(--gray)] w-8">LOC</span>
+                    <span className="text-sm text-[var(--gray-light)]">
                       Medellín, Colombia
                     </span>
                   </div>
@@ -1160,8 +1108,8 @@ function Contacto() {
 
               {/* Social */}
               <div>
-                <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gray)] mb-4 uppercase">
-                  // Redes
+                <div className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] text-[var(--gray)] mb-4 uppercase">
+                  Redes
                 </div>
                 <div className="flex items-center gap-6">
                   {SOCIALS.map((social) => (
@@ -1171,7 +1119,7 @@ function Contacto() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`${social.label} (abre en nueva pestaña)`}
-                      className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.2em] text-[var(--gray)] hover:text-[var(--accent)] transition-colors"
+                      className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] text-[var(--gray)] hover:text-[var(--accent)] transition-colors"
                     >
                       {social.symbol}
                     </a>
@@ -1208,7 +1156,7 @@ function MetricsBar() {
             <div className="font-[family-name:var(--font-serif)] text-3xl md:text-4xl lg:text-5xl text-[var(--accent)] font-bold mb-2">
               {m.value}
             </div>
-            <div className="font-[family-name:var(--font-geist-mono)] text-[10px] md:text-xs tracking-[0.15em] text-[var(--gray-light)] uppercase">
+            <div className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] text-[var(--gray-light)] uppercase">
               {m.label}
             </div>
           </div>
@@ -1228,7 +1176,7 @@ function Publicaciones() {
       <div ref={reveal.ref} className={`max-w-6xl mx-auto transition-all duration-700 ${reveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
         <SectionHeader>PUBLICACIONES</SectionHeader>
 
-        <p className="font-[family-name:var(--font-geist-mono)] text-sm text-[var(--gray-light)] max-w-2xl mt-6 mb-16 leading-relaxed">
+        <p className="text-sm text-[var(--gray-light)] max-w-2xl mt-6 mb-16 leading-relaxed">
           Reflexiones y ensayos de nuestro equipo publicados en medios reconocidos.
         </p>
 
@@ -1241,7 +1189,7 @@ function Publicaciones() {
               rel="noopener noreferrer"
               className="group block"
             >
-              <AsciiFrame>
+              <Card>
                 <div className="overflow-hidden">
                   <div className="aspect-[16/10] overflow-hidden">
                     <img
@@ -1253,25 +1201,25 @@ function Publicaciones() {
                   </div>
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-3">
-                      <span className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.3em] text-[var(--gray)] uppercase">
+                      <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] text-[var(--gray)] uppercase">
                         {pub.source}
                       </span>
-                      <span className="font-[family-name:var(--font-geist-mono)] text-[10px] text-[var(--gray)] opacity-40">
+                      <span className="font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray)] opacity-40">
                         ↗
                       </span>
                     </div>
                     <h4 className="font-[family-name:var(--font-serif)] text-base text-[var(--foreground)] mb-2 group-hover:text-[var(--accent)] transition-colors duration-300 leading-snug">
                       {pub.title}
                     </h4>
-                    <p className="font-[family-name:var(--font-geist-mono)] text-[11px] text-[var(--gray-light)] leading-relaxed mb-3 line-clamp-3">
+                    <p className="text-xs text-[var(--gray-light)] leading-relaxed mb-3 line-clamp-3">
                       {pub.excerpt}
                     </p>
-                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] text-[var(--gray)] italic">
+                    <span className="font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray)] italic">
                       — {pub.author}
                     </span>
                   </div>
                 </div>
-              </AsciiFrame>
+              </Card>
             </a>
           ))}
         </div>
@@ -1304,24 +1252,24 @@ function Testimonios() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {TESTIMONIALS.map((t, i) => (
-              <AsciiFrame key={i}>
+              <Card key={i}>
                 <div className="p-6 md:p-8">
                   <svg viewBox="0 0 24 24" className="w-6 h-6 mb-4 opacity-20" aria-hidden="true">
                     <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C9.591 11.69 11 13.166 11 15c0 1.933-1.567 3.5-3.5 3.5-1.288 0-2.46-.7-2.917-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C19.591 11.69 21 13.166 21 15c0 1.933-1.567 3.5-3.5 3.5-1.288 0-2.46-.7-2.917-1.179z" fill="var(--accent)" />
                   </svg>
-                  <p className="font-[family-name:var(--font-geist-mono)] text-xs leading-[1.9] text-[var(--gray-light)] mb-6">
+                  <p className="text-xs leading-[1.9] text-[var(--gray-light)] mb-6">
                     &ldquo;{t.quote}&rdquo;
                   </p>
                   <div className="border-t border-[var(--border)]/30 pt-4">
                     <div className="font-[family-name:var(--font-serif)] text-sm text-[var(--foreground)]">
                       {t.name}
                     </div>
-                    <div className="font-[family-name:var(--font-geist-mono)] text-[10px] text-[var(--gray)] mt-1">
+                    <div className="font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray)] mt-1">
                       {t.role}
                     </div>
                   </div>
                 </div>
-              </AsciiFrame>
+              </Card>
             ))}
           </div>
         </div>
@@ -1338,19 +1286,19 @@ function ProximoEvento() {
   return (
     <div
       ref={reveal.ref}
-      className={`relative px-6 md:px-16 lg:px-24 py-16 md:py-20 bg-[var(--accent)] text-white transition-all duration-1000 ${
+      className={`relative px-6 md:px-16 lg:px-24 py-16 md:py-20 bg-[var(--foreground)] text-white transition-all duration-1000 ${
         reveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
       }`}
     >
       <div className="max-w-5xl mx-auto grid md:grid-cols-[1fr_auto] gap-10 items-center">
         <div>
-          <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.4em] text-white/50 uppercase mb-4">
-            // Próximo evento
+          <div className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] text-white/50 uppercase mb-4">
+            Próximo evento
           </div>
           <h3 className="font-[family-name:var(--font-serif)] text-3xl md:text-4xl font-bold mb-3">
             Retiro Triángulo Vital
           </h3>
-          <div className="font-[family-name:var(--font-geist-mono)] text-sm text-white/70 leading-relaxed mb-6">
+          <div className="text-sm text-white/70 leading-relaxed mb-6">
             Un día completo de inmersión humana. Reconéctate con tu esencia.
           </div>
           <div className="flex flex-wrap gap-x-8 gap-y-2 font-[family-name:var(--font-geist-mono)] text-xs text-white/50">
@@ -1363,9 +1311,9 @@ function ProximoEvento() {
           href="https://wa.me/573001234567?text=Quiero%20reservar%20cupo%20para%20el%20retiro%20Triángulo%20Vital"
           target="_blank"
           rel="noopener noreferrer"
-          className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.2em] uppercase border border-white/40 hover:bg-white hover:text-[var(--accent)] px-8 py-4 transition-all duration-500 whitespace-nowrap text-center"
+          className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] uppercase border border-white/40 hover:bg-white hover:text-[var(--foreground)] px-8 py-4 rounded-lg transition-all duration-500 whitespace-nowrap text-center"
         >
-          {">"} Reservar cupo_
+          Reservar cupo
         </a>
       </div>
     </div>
@@ -1381,19 +1329,18 @@ function Newsletter() {
   return (
     <div className="px-6 md:px-16 lg:px-24 py-16 bg-[var(--surface-alt)] border-y border-[var(--border)]/30">
       <div className="max-w-2xl mx-auto text-center">
-        <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gray)] mb-4 uppercase">
-          // Mantente conectado
+        <div className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] text-[var(--gray)] mb-4 uppercase">
+          Mantente conectado
         </div>
         <h3 className="font-[family-name:var(--font-serif)] text-2xl md:text-3xl text-[var(--foreground)] mb-3">
           Reflexiones en tu bandeja.
         </h3>
-        <p className="font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray-light)] mb-8">
+        <p className="text-xs text-[var(--gray-light)] mb-8">
           Recibe artículos, invitaciones a eventos y reflexiones sobre humanismo digital.
         </p>
         {subscribed ? (
           <div className="font-[family-name:var(--font-geist-mono)] text-sm text-[var(--accent)]" role="status" aria-live="polite">
-            {">"} Suscripción confirmada. Bienvenido al movimiento.
-            <span className="cursor-blink ml-1" aria-hidden="true">_</span>
+            Suscripción confirmada. Bienvenido al movimiento.
           </div>
         ) : (
           <form
@@ -1408,14 +1355,14 @@ function Newsletter() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="> tu@email.com"
-              className="flex-1 bg-transparent border border-[var(--border)]/30 focus:border-[var(--accent)] text-[var(--foreground)] font-[family-name:var(--font-geist-mono)] text-sm px-4 py-3 outline-none transition-colors placeholder:text-[var(--border)]"
+              placeholder="tu@email.com"
+              className="flex-1 bg-transparent border border-[var(--border)]/30 focus:border-[var(--accent)] text-[var(--foreground)] text-sm px-4 py-3 rounded-lg outline-none transition-colors placeholder:text-[var(--border)]"
             />
             <button
               type="submit"
-              className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] uppercase border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-white px-6 py-3 transition-all duration-500"
+              className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] uppercase border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-white px-6 py-3 rounded-lg transition-all duration-500"
             >
-              Suscribir_
+              Suscribir
             </button>
           </form>
         )}
@@ -1458,9 +1405,8 @@ function Footer() {
       </div>
 
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.2em] text-[var(--gray-light)]">
+        <div className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] text-[var(--gray-light)]">
           © {new Date().getFullYear()} Todos los derechos reservados — Aún Humanos
-          <span className="cursor-blink ml-1 text-[var(--gray)]">_</span>
         </div>
 
         <div className="hidden md:flex items-center gap-6">
@@ -1468,7 +1414,7 @@ function Footer() {
             <a
               key={link.href}
               href={link.href}
-              className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.15em] uppercase text-[var(--gray)] hover:text-[var(--accent)] transition-colors"
+              className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] uppercase text-[var(--gray)] hover:text-[var(--accent)] transition-colors"
             >
               {link.label}
             </a>
@@ -1478,7 +1424,7 @@ function Footer() {
         {/* Back to top */}
         <a
           href="#inicio"
-          className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.15em] uppercase text-[var(--gray)] hover:text-[var(--accent)] transition-colors"
+          className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] uppercase text-[var(--gray)] hover:text-[var(--accent)] transition-colors"
           aria-label="Volver al inicio"
         >
           ↑ INICIO
@@ -1492,22 +1438,22 @@ function Footer() {
 
 export default function Home() {
   return (
-    <main className="crt-flicker">
+    <main>
       <ScrollProgress />
       <Navbar />
       <Hero />
       <MetricsBar />
-      <TerminalDivider variant={0} />
+      <SectionDivider />
       <Somos />
-      <TerminalDivider variant={1} />
+      <SectionDivider />
       <TrianguloVital />
-      <TerminalDivider variant={2} />
+      <SectionDivider />
       <HumanismoDigital />
-      <TerminalDivider variant={3} />
+      <SectionDivider />
       <Servicios />
-      <TerminalDivider variant={4} />
+      <SectionDivider />
       <Publicaciones />
-      <TerminalDivider variant={0} />
+      <SectionDivider />
       <Testimonios />
       <ProximoEvento />
       <Newsletter />
