@@ -8,7 +8,7 @@
   --gray: #6b6560;
   --gray-light: #9b9590;
   --green-phosphor: #3aff7a;
-  --scanline-opacity: 0.03;
+  --scanline-opacity: 0.045;
 }
 
 @theme inline {
@@ -47,6 +47,17 @@ body {
 ::-webkit-scrollbar-thumb {
   background: var(--gold-dim);
   border-radius: 3px;
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-dim));
+  z-index: 9998;
+  transition: width 50ms linear;
 }
 
 /* CRT Scanlines overlay */
@@ -100,47 +111,42 @@ body {
   animation: blink-cursor 1s steps(1) infinite;
 }
 
-/* Reveal animation */
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Scroll chevron bounce */
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(6px); opacity: 1; }
 }
 
-.animate-fade-up {
-  animation: fade-up 0.8s ease-out forwards;
+.animate-scroll-bounce {
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+/* SVG node pulse */
+@keyframes node-pulse {
+  0%, 100% { r: 5; opacity: 0.7; }
+  50% { r: 7; opacity: 1; }
+}
+
+.animate-node-pulse {
+  animation: node-pulse 3s ease-in-out infinite;
+}
+
+/* Stagger children */
+.stagger-children > * {
   opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-
-/* Stagger delays */
-.delay-100 { animation-delay: 0.1s; }
-.delay-200 { animation-delay: 0.2s; }
-.delay-300 { animation-delay: 0.3s; }
-.delay-400 { animation-delay: 0.4s; }
-.delay-500 { animation-delay: 0.5s; }
-.delay-600 { animation-delay: 0.6s; }
-.delay-700 { animation-delay: 0.7s; }
-.delay-800 { animation-delay: 0.8s; }
-.delay-900 { animation-delay: 0.9s; }
-.delay-1000 { animation-delay: 1.0s; }
-
-/* Terminal typing */
-@keyframes type-line {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-.terminal-line {
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 2px solid var(--gold);
-  animation: type-line 1.5s steps(40) forwards, blink-cursor 1s steps(1) infinite 1.5s;
-}
+.stagger-children.is-visible > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0ms; }
+.stagger-children.is-visible > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 80ms; }
+.stagger-children.is-visible > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 160ms; }
+.stagger-children.is-visible > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 240ms; }
+.stagger-children.is-visible > *:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 320ms; }
+.stagger-children.is-visible > *:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 400ms; }
+.stagger-children.is-visible > *:nth-child(7) { opacity: 1; transform: translateY(0); transition-delay: 480ms; }
+.stagger-children.is-visible > *:nth-child(8) { opacity: 1; transform: translateY(0); transition-delay: 560ms; }
+.stagger-children.is-visible > *:nth-child(9) { opacity: 1; transform: translateY(0); transition-delay: 640ms; }
+.stagger-children.is-visible > *:nth-child(10) { opacity: 1; transform: translateY(0); transition-delay: 720ms; }
 
 /* Noise texture */
 .noise-bg {
@@ -153,22 +159,7 @@ body {
   opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
   pointer-events: none;
-  z-index: 1;
-}
-
-/* Horizontal rule terminal style */
-.terminal-hr {
-  border: none;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--gold-dim) 20%,
-    var(--gold) 50%,
-    var(--gold-dim) 80%,
-    transparent
-  );
-  opacity: 0.3;
+  z-index: 0;
 }
 
 /* Glitch effect on hover */
@@ -185,8 +176,6 @@ body {
   animation: glitch 0.3s ease-in-out;
 }
 
-/* Video hero - gradient overlay is now inline in JSX */
-
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;
@@ -195,4 +184,9 @@ html {
 /* Section spacing */
 section {
   position: relative;
+}
+
+/* SVG glow filter reference */
+.svg-glow {
+  filter: drop-shadow(0 0 6px rgba(201, 168, 76, 0.3));
 }
