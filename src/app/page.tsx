@@ -416,9 +416,9 @@ function Navbar() {
           aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={menuOpen}
         >
-          <span className={`block w-6 h-[2px] transition-all duration-300 ${scrolled ? "bg-[var(--foreground)]" : "bg-white"} ${menuOpen ? "rotate-45 translate-y-[6px]" : ""}`} />
-          <span className={`block w-6 h-[2px] transition-all duration-300 ${scrolled ? "bg-[var(--foreground)]" : "bg-white"} ${menuOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-[2px] transition-all duration-300 ${scrolled ? "bg-[var(--foreground)]" : "bg-white"} ${menuOpen ? "-rotate-45 -translate-y-[6px]" : ""}`} />
+          <span className={`block w-6 h-[2px] transition-all duration-300 ${scrolled || menuOpen ? "bg-[var(--foreground)]" : "bg-white"} ${menuOpen ? "rotate-45 translate-y-[6px]" : ""}`} />
+          <span className={`block w-6 h-[2px] transition-all duration-300 ${scrolled || menuOpen ? "bg-[var(--foreground)]" : "bg-white"} ${menuOpen ? "opacity-0" : ""}`} />
+          <span className={`block w-6 h-[2px] transition-all duration-300 ${scrolled || menuOpen ? "bg-[var(--foreground)]" : "bg-white"} ${menuOpen ? "-rotate-45 -translate-y-[6px]" : ""}`} />
         </button>
       </div>
 
@@ -1172,7 +1172,7 @@ function Publicaciones() {
   const reveal = useReveal();
 
   return (
-    <section id="publicaciones" className="py-24 md:py-36 px-6">
+    <section id="publicaciones" className="py-24 md:py-36 px-6 md:px-16 lg:px-24">
       <div ref={reveal.ref} className={`max-w-6xl mx-auto transition-all duration-700 ${reveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
         <SectionHeader>PUBLICACIONES</SectionHeader>
 
@@ -1292,16 +1292,16 @@ function ProximoEvento() {
     >
       <div className="max-w-5xl mx-auto grid md:grid-cols-[1fr_auto] gap-10 items-center">
         <div>
-          <div className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] text-white/50 uppercase mb-4">
+          <div className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] text-white/60 uppercase mb-4">
             Próximo evento
           </div>
           <h3 className="font-[family-name:var(--font-serif)] text-3xl md:text-4xl font-bold mb-3">
             Retiro Triángulo Vital
           </h3>
-          <div className="text-sm text-white/70 leading-relaxed mb-6">
+          <div className="text-sm text-white/75 leading-relaxed mb-6">
             Un día completo de inmersión humana. Reconéctate con tu esencia.
           </div>
-          <div className="flex flex-wrap gap-x-8 gap-y-2 font-[family-name:var(--font-geist-mono)] text-xs text-white/50">
+          <div className="flex flex-wrap gap-x-8 gap-y-2 font-[family-name:var(--font-geist-mono)] text-xs text-white/60">
             <span>LOC: Medellín, Colombia</span>
             <span>FECHA: Abril 2026</span>
             <span>CUPOS: 15 personas</span>
