@@ -454,7 +454,7 @@ function Navbar() {
 
 function Hero() {
   return (
-    <section id="inicio" className="relative h-screen w-full overflow-hidden bg-[#1c1917]">
+    <section id="inicio" className="relative h-screen w-full overflow-hidden bg-[var(--foreground)]">
       {/* Video background — warm, no grayscale */}
       <video
         autoPlay
@@ -1037,7 +1037,7 @@ function Contacto() {
                         required
                         onFocus={() => setFocusedField(field.id)}
                         onBlur={() => setFocusedField(null)}
-                        className="w-full bg-transparent border-b border-[var(--border)]/20 focus:border-[var(--accent)] text-[var(--foreground)] text-sm py-3 outline-none transition-colors placeholder:text-[var(--border)]"
+                        className="w-full bg-transparent border-b border-[var(--border)]/30 focus:border-[var(--accent)] text-[var(--foreground)] text-sm py-3 outline-none transition-colors placeholder:text-[var(--border)]"
                         placeholder={`Ingresa tu ${field.label.toLowerCase()}...`}
                       />
                     </div>
@@ -1054,7 +1054,7 @@ function Contacto() {
                       required
                       onFocus={() => setFocusedField("mensaje")}
                       onBlur={() => setFocusedField(null)}
-                      className="w-full bg-transparent border-b border-[var(--border)]/20 focus:border-[var(--accent)] text-[var(--foreground)] text-sm py-3 outline-none transition-colors resize-none placeholder:text-[var(--border)]"
+                      className="w-full bg-transparent border-b border-[var(--border)]/30 focus:border-[var(--accent)] text-[var(--foreground)] text-sm py-3 outline-none transition-colors resize-none placeholder:text-[var(--border)]"
                       placeholder="Escribe tu mensaje..."
                     />
                   </div>
