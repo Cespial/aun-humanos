@@ -14,12 +14,12 @@ const NAV_LINKS = [
 ];
 
 const TEAM = [
-  { name: "PhD Felipe Jaramillo V.", role: "Creador de Aún Humanos", tag: "FOUNDER", initials: "FJ" },
-  { name: "Mg Olga Zapata A.", role: "Corazón Aún Humanos", tag: "SOUL", initials: "OZ" },
-  { name: "PhD Sergio Molina P.", role: "Ni Un Día Sin Amor", tag: "LOVE", initials: "SM" },
-  { name: "PhD Santiago Jiménez L.", role: "Algoritmos Deshumanizantes", tag: "ETHICS", initials: "SJ" },
-  { name: "MG Andrés Jaramillo V.", role: "La vacuidad creadora", tag: "CREATE", initials: "AJ" },
-  { name: "PhD Orión Vargas V.", role: "Remagía", tag: "MAGIC", initials: "OV" },
+  { name: "PhD Felipe Jaramillo V.", role: "Creador de Aún Humanos", tag: "FOUNDER", photo: "/team/felipe.png" },
+  { name: "Mg Olga Zapata A.", role: "Corazón Aún Humanos", tag: "SOUL", photo: "/team/olga.png" },
+  { name: "PhD Sergio Molina P.", role: "Ni Un Día Sin Amor", tag: "LOVE", photo: "/team/sergio.png" },
+  { name: "PhD Santiago Jiménez L.", role: "Algoritmos Deshumanizantes", tag: "ETHICS", photo: "/team/santiago.png" },
+  { name: "MG Andrés Jaramillo V.", role: "La vacuidad creadora", tag: "CREATE", photo: "/team/andres.png" },
+  { name: "PhD Orión Vargas V.", role: "Remagía", tag: "MAGIC", photo: "/team/orion.png" },
 ];
 
 const PRINCIPLES = [
@@ -305,33 +305,16 @@ function AsciiFrame({ children, className = "", highlight = false }: { children:
   );
 }
 
-function MemberAvatar({ initials, isFounder }: { initials: string; isFounder: boolean }) {
+function MemberPhoto({ src, name, isFounder }: { src: string; name: string; isFounder: boolean }) {
   return (
-    <svg viewBox="0 0 56 56" fill="none" className="w-14 h-14 mb-4" aria-hidden="true">
-      {isFounder ? (
-        <>
-          <circle cx="28" cy="28" r="26" stroke="var(--accent)" strokeWidth="1" opacity="0.4" />
-          <circle cx="28" cy="28" r="22" stroke="var(--accent)" strokeWidth="0.5" opacity="0.2" strokeDasharray="3 3" />
-          <circle cx="28" cy="28" r="18" fill="var(--accent)" fillOpacity="0.08" />
-        </>
-      ) : (
-        <>
-          <circle cx="28" cy="28" r="26" stroke="var(--gray)" strokeWidth="0.6" opacity="0.25" />
-          <circle cx="28" cy="28" r="18" fill="var(--accent)" fillOpacity="0.04" />
-        </>
-      )}
-      <text
-        x="28" y="28"
-        textAnchor="middle"
-        dominantBaseline="central"
-        fill={isFounder ? "var(--accent)" : "var(--gray-light)"}
-        fontSize="14"
-        fontFamily="serif"
-        opacity={isFounder ? 0.8 : 0.5}
-      >
-        {initials}
-      </text>
-    </svg>
+    <div className={`relative w-20 h-20 mb-4 rounded-full overflow-hidden border-2 ${isFounder ? "border-[var(--accent)]" : "border-[var(--border)]"}`}>
+      <img
+        src={src}
+        alt={name}
+        className="w-full h-full object-cover"
+        loading="lazy"
+      />
+    </div>
   );
 }
 
@@ -630,7 +613,7 @@ function Somos() {
             {TEAM.map((member, i) => (
               <AsciiFrame key={member.name} highlight={i === 0}>
                 <div className="p-6 md:p-8 group hover:bg-[var(--accent)]/[0.03] transition-colors duration-500">
-                  <MemberAvatar initials={member.initials} isFounder={i === 0} />
+                  <MemberPhoto src={member.photo} name={member.name} isFounder={i === 0} />
                   <div className="flex items-start justify-between mb-3">
                     <span className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.3em] text-[var(--gray)] bg-[var(--accent)]/[0.06] px-2 py-1">
                       {member.tag}
