@@ -246,7 +246,7 @@ function SectionHeader({ children }: { children: string }) {
     <h2 className="font-[family-name:var(--font-geist-mono)] text-sm tracking-[0.3em] uppercase text-[var(--accent)] mb-2">
       <span className="opacity-50">{">"} </span>
       {children}
-      <span className="cursor-blink ml-1 text-[var(--accent)]">_</span>
+      <span className="cursor-blink ml-1 text-[var(--accent)]" aria-hidden="true">_</span>
     </h2>
   );
 }
@@ -375,9 +375,9 @@ function Navbar() {
                 }`}
               >
                 {link.label}
-                {isActive && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-px bg-[var(--accent)] opacity-60" />
-                )}
+                <span className={`absolute -bottom-1 left-0 right-0 h-px bg-[var(--accent)] transition-all duration-300 ${
+                  isActive ? "opacity-60 scale-x-100" : "opacity-0 scale-x-0"
+                }`} />
               </a>
             );
           })}
@@ -386,12 +386,12 @@ function Navbar() {
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden flex flex-col gap-[5px] group focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--accent)] focus-visible:outline-offset-4 rounded-sm"
-          aria-label="Toggle menu"
+          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={menuOpen}
         >
-          <span className={`block w-6 h-px bg-[var(--accent)] transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-[6px]" : ""}`} />
-          <span className={`block w-6 h-px bg-[var(--accent)] transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-px bg-[var(--accent)] transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-[6px]" : ""}`} />
+          <span className={`block w-6 h-[2px] bg-[var(--accent)] transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-[6px]" : ""}`} />
+          <span className={`block w-6 h-[2px] bg-[var(--accent)] transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
+          <span className={`block w-6 h-[2px] bg-[var(--accent)] transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-[6px]" : ""}`} />
         </button>
       </div>
 
@@ -947,7 +947,7 @@ function Contacto() {
               </p>
 
               {submitted ? (
-                <div className="py-12">
+                <div className="py-12" role="status" aria-live="polite">
                   <div className="font-[family-name:var(--font-geist-mono)] text-sm text-[var(--accent)] text-glow mb-2">
                     {">"} Mensaje enviado correctamente.
                   </div>
@@ -1073,7 +1073,7 @@ function Footer() {
           <span className="cursor-blink ml-1 text-[var(--gray)]">_</span>
         </div>
 
-        <div className="flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-6">
           {NAV_LINKS.slice(1, 5).map((link) => (
             <a
               key={link.href}
@@ -1089,7 +1089,7 @@ function Footer() {
         <a
           href="#inicio"
           className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.15em] uppercase text-[var(--gray)] hover:text-[var(--accent)] transition-colors"
-          aria-label="Back to top"
+          aria-label="Volver al inicio"
         >
           ↑ INICIO
         </a>
