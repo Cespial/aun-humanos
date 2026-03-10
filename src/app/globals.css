@@ -203,6 +203,17 @@ section {
     animation: none !important;
     transform: scaleX(1) !important;
   }
+  .stagger-children > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .animate-scroll-bounce {
+    animation: none !important;
+  }
+  .cursor-blink {
+    animation: none !important;
+  }
   video {
     animation: none !important;
   }
