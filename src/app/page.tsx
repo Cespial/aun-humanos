@@ -458,7 +458,7 @@ function Navbar() {
 
 function Hero() {
   return (
-    <section id="inicio" className="relative h-screen w-full overflow-hidden bg-[var(--foreground)]">
+    <section id="inicio" className="relative h-dvh w-full overflow-hidden bg-[var(--foreground)]">
       {/* Video background — warm, no grayscale */}
       <video
         autoPlay
