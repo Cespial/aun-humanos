@@ -370,6 +370,7 @@ function Navbar() {
 
   return (
     <nav
+      aria-label="Navegación principal"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? "bg-[var(--background)]/90 backdrop-blur-md border-b border-[var(--border)]/30"
@@ -1439,6 +1440,12 @@ function Footer() {
 export default function Home() {
   return (
     <main>
+      <a
+        href="#inicio"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-[var(--accent)] focus:text-white focus:rounded focus:text-sm focus:font-medium focus:outline-none"
+      >
+        Saltar al contenido
+      </a>
       <ScrollProgress />
       <Navbar />
       <Hero />
