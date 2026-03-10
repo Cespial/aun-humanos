@@ -145,7 +145,7 @@ function SealSVG() {
       {/* Circular text top */}
       <defs>
         <path id="topArc" d="M30,100 a70,70 0 0,1 140,0" />
-        <path id="bottomArc" d="M30,100 a70,70 0 0,0 140,0" />
+        <path id="bottomArc" d="M170,100 a70,70 0 0,1 -140,0" />
       </defs>
       <text fill="var(--accent)" fontSize="7" fontFamily="monospace" letterSpacing="0.3em" opacity="0.5">
         <textPath href="#topArc" startOffset="50%" textAnchor="middle">
@@ -395,7 +395,10 @@ function Navbar() {
         </button>
       </div>
 
-      <div className={`md:hidden overflow-hidden transition-all duration-500 ${menuOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"}`}>
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-500 ${menuOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"}`}
+        aria-hidden={!menuOpen}
+      >
         <div className="px-6 pb-8 pt-2 bg-[var(--background)]/95 backdrop-blur-lg border-t border-[var(--border)]/30 flex flex-col gap-5">
           {NAV_LINKS.map((link) => {
             const isActive = activeSection === link.href.slice(1);
@@ -404,6 +407,7 @@ function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
+                tabIndex={menuOpen ? 0 : -1}
                 className={`font-[family-name:var(--font-geist-mono)] text-sm tracking-[0.15em] uppercase transition-colors ${
                   isActive ? "text-[var(--accent)]" : "text-[var(--gray-light)] hover:text-[var(--accent)]"
                 }`}
@@ -592,7 +596,7 @@ function Somos() {
                     <span className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.3em] text-[var(--gray)] bg-[var(--accent)]/[0.06] px-2 py-1">
                       {member.tag}
                     </span>
-                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] text-[var(--gray)]/40">
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] text-[var(--gray)] opacity-40">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
@@ -661,15 +665,15 @@ function TrianguloVital() {
                     d="M200 120 L310 310 L90 310 Z"
                     stroke="var(--accent)"
                     strokeWidth="0.4"
-                    opacity="0.15"
+                    opacity="0.25"
                     strokeDasharray="6 4"
                     fill="none"
                   />
 
                   {/* Connecting lines to center */}
-                  <line x1="200" y1="50" x2="200" y2="230" stroke="var(--accent)" strokeWidth="0.5" opacity="0.15" strokeDasharray="3 5" />
-                  <line x1="375" y1="350" x2="200" y2="230" stroke="var(--accent)" strokeWidth="0.5" opacity="0.15" strokeDasharray="3 5" />
-                  <line x1="25" y1="350" x2="200" y2="230" stroke="var(--accent)" strokeWidth="0.5" opacity="0.15" strokeDasharray="3 5" />
+                  <line x1="200" y1="50" x2="200" y2="230" stroke="var(--accent)" strokeWidth="0.5" opacity="0.25" strokeDasharray="3 5" />
+                  <line x1="375" y1="350" x2="200" y2="230" stroke="var(--accent)" strokeWidth="0.5" opacity="0.25" strokeDasharray="3 5" />
+                  <line x1="25" y1="350" x2="200" y2="230" stroke="var(--accent)" strokeWidth="0.5" opacity="0.25" strokeDasharray="3 5" />
 
                   {/* Center rings */}
                   <circle cx="200" cy="230" r="32" stroke="var(--accent)" strokeWidth="0.6" opacity="0.25" />
@@ -760,7 +764,7 @@ function HumanismoDigital() {
     <section id="humanismo" className="relative px-6 md:px-16 lg:px-24 py-24 md:py-36 noise-bg bg-[var(--surface-alt)]">
       <div className="absolute left-4 top-1/2 -translate-y-1/2 hidden xl:block">
         <div
-          className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.5em] text-[var(--gray)]/15 uppercase"
+          className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.5em] text-[var(--gray)] opacity-15 uppercase"
           style={{ writingMode: "vertical-rl" }}
         >
           HUMANISMO · DIGITAL · ÉTICO · CONSCIENTE
@@ -873,7 +877,7 @@ function Servicios() {
                 <div className="p-6 md:p-8 h-full hover:bg-[var(--accent)]/[0.03] transition-all duration-500">
                   <div className="flex items-start justify-between mb-6">
                     <ServiceIcon type={service.id} className="opacity-60 group-hover:opacity-100 transition-opacity" />
-                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] text-[var(--gray)]/40">
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] text-[var(--gray)] opacity-40">
                       SRV.{String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
@@ -957,34 +961,36 @@ function Contacto() {
                     { id: "email", label: "email", type: "email" },
                   ].map((field) => (
                     <div key={field.id} className="relative">
-                      <div className="flex items-center gap-2 font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray)] mb-2">
+                      <label htmlFor={field.id} className="flex items-center gap-2 font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray)] mb-2 cursor-pointer">
                         <span className={`transition-colors ${focusedField === field.id ? "text-[var(--accent)]" : ""}`}>{">"}</span>
                         <span>{field.label}:</span>
-                      </div>
+                      </label>
                       <input
                         type={field.type}
                         id={field.id}
+                        name={field.id}
                         required
                         onFocus={() => setFocusedField(field.id)}
                         onBlur={() => setFocusedField(null)}
-                        className="w-full bg-transparent border-b border-[var(--border)]/20 focus:border-[var(--accent)] text-[var(--foreground)] font-[family-name:var(--font-geist-mono)] text-sm py-3 outline-none transition-colors placeholder:text-[var(--gray)]/30"
+                        className="w-full bg-transparent border-b border-[var(--border)]/20 focus:border-[var(--accent)] text-[var(--foreground)] font-[family-name:var(--font-geist-mono)] text-sm py-3 outline-none transition-colors placeholder:text-[var(--border)]"
                         placeholder={`Ingresa tu ${field.label}...`}
                       />
                     </div>
                   ))}
 
                   <div className="relative">
-                    <div className="flex items-center gap-2 font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray)] mb-2">
+                    <label htmlFor="mensaje" className="flex items-center gap-2 font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray)] mb-2 cursor-pointer">
                       <span className={`transition-colors ${focusedField === "mensaje" ? "text-[var(--accent)]" : ""}`}>{">"}</span>
                       <span>mensaje:</span>
-                    </div>
+                    </label>
                     <textarea
                       id="mensaje"
+                      name="mensaje"
                       rows={4}
                       required
                       onFocus={() => setFocusedField("mensaje")}
                       onBlur={() => setFocusedField(null)}
-                      className="w-full bg-transparent border-b border-[var(--border)]/20 focus:border-[var(--accent)] text-[var(--foreground)] font-[family-name:var(--font-geist-mono)] text-sm py-3 outline-none transition-colors resize-none placeholder:text-[var(--gray)]/30"
+                      className="w-full bg-transparent border-b border-[var(--border)]/20 focus:border-[var(--accent)] text-[var(--foreground)] font-[family-name:var(--font-geist-mono)] text-sm py-3 outline-none transition-colors resize-none placeholder:text-[var(--border)]"
                       placeholder="Escribe tu mensaje..."
                     />
                   </div>
@@ -1015,7 +1021,7 @@ function Contacto() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center gap-4 py-3 border-b border-[var(--border)]/30 hover:border-[var(--accent)]/20 transition-colors"
+                      className="group flex items-center gap-4 py-3 border-b border-[var(--border)]/30 hover:border-[var(--accent)] transition-colors"
                     >
                       <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gray)] w-8">
                         {social.symbol}
@@ -1050,7 +1056,7 @@ function Footer() {
     <footer className="relative px-6 md:px-16 lg:px-24 py-10 border-t border-[var(--border)]/30">
       {/* Decorative SVG line */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <svg viewBox="0 0 80 16" fill="none" className="w-20 h-4">
+        <svg viewBox="0 0 80 16" fill="none" className="w-20 h-4" aria-hidden="true">
           <line x1="0" y1="8" x2="30" y2="8" stroke="var(--accent)" strokeWidth="0.5" opacity="0.2" />
           <circle cx="40" cy="8" r="3" stroke="var(--accent)" strokeWidth="0.5" opacity="0.3" />
           <circle cx="40" cy="8" r="1" fill="var(--accent)" opacity="0.4" />
@@ -1059,7 +1065,7 @@ function Footer() {
       </div>
 
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.2em] text-[var(--gray)]/60">
+        <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.2em] text-[var(--gray-light)]">
           © {new Date().getFullYear()} Todos los derechos reservados — Aún Humanos
           <span className="cursor-blink ml-1 text-[var(--gray)]">_</span>
         </div>
@@ -1069,7 +1075,7 @@ function Footer() {
             <a
               key={link.href}
               href={link.href}
-              className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.15em] uppercase text-[var(--gray)]/40 hover:text-[var(--accent)] transition-colors"
+              className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.15em] uppercase text-[var(--gray)] hover:text-[var(--accent)] transition-colors"
             >
               {link.label}
             </a>
@@ -1079,7 +1085,7 @@ function Footer() {
         {/* Back to top */}
         <a
           href="#inicio"
-          className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.15em] uppercase text-[var(--gray)]/40 hover:text-[var(--accent)] transition-colors"
+          className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.15em] uppercase text-[var(--gray)] hover:text-[var(--accent)] transition-colors"
           aria-label="Back to top"
         >
           ↑ INICIO
