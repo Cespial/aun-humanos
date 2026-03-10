@@ -53,65 +53,65 @@ const SOCIALS = [
 /* ═══════════════════════ SVG ICONS ═══════════════════════ */
 
 function ServiceIcon({ type, className = "" }: { type: string; className?: string }) {
-  const c = "var(--gold)";
+  const c = "var(--accent)";
   const shared = `w-10 h-10 ${className}` as const;
 
   switch (type) {
     case "workshop":
       return (
         <svg viewBox="0 0 40 40" fill="none" className={shared} aria-hidden="true">
-          <circle cx="20" cy="20" r="18" stroke={c} strokeWidth="0.8" opacity="0.3" />
-          <circle cx="20" cy="20" r="12" stroke={c} strokeWidth="0.5" opacity="0.2" strokeDasharray="3 3" />
-          <path d="M14 20h12M20 14v12" stroke={c} strokeWidth="1.2" opacity="0.8" />
-          <circle cx="20" cy="20" r="3" fill={c} opacity="0.15" />
-          <circle cx="20" cy="20" r="1.5" fill={c} opacity="0.6" />
+          <circle cx="20" cy="20" r="18" stroke={c} strokeWidth="0.8" opacity="0.5" />
+          <circle cx="20" cy="20" r="12" stroke={c} strokeWidth="0.5" opacity="0.35" strokeDasharray="3 3" />
+          <path d="M14 20h12M20 14v12" stroke={c} strokeWidth="1.2" opacity="0.9" />
+          <circle cx="20" cy="20" r="3" fill={c} opacity="0.25" />
+          <circle cx="20" cy="20" r="1.5" fill={c} opacity="0.7" />
         </svg>
       );
     case "consulting":
       return (
         <svg viewBox="0 0 40 40" fill="none" className={shared} aria-hidden="true">
-          <rect x="6" y="6" width="28" height="28" rx="2" stroke={c} strokeWidth="0.8" opacity="0.3" />
-          <line x1="6" y1="14" x2="34" y2="14" stroke={c} strokeWidth="0.5" opacity="0.2" />
-          <rect x="10" y="18" width="8" height="4" rx="1" stroke={c} strokeWidth="0.8" opacity="0.5" />
-          <rect x="22" y="18" width="8" height="4" rx="1" stroke={c} strokeWidth="0.8" opacity="0.5" />
-          <rect x="10" y="26" width="20" height="4" rx="1" stroke={c} strokeWidth="0.8" opacity="0.5" />
-          <circle cx="9" cy="10" r="1.5" fill={c} opacity="0.4" />
-          <circle cx="14" cy="10" r="1.5" fill={c} opacity="0.4" />
+          <rect x="6" y="6" width="28" height="28" rx="2" stroke={c} strokeWidth="0.8" opacity="0.5" />
+          <line x1="6" y1="14" x2="34" y2="14" stroke={c} strokeWidth="0.5" opacity="0.35" />
+          <rect x="10" y="18" width="8" height="4" rx="1" stroke={c} strokeWidth="0.8" opacity="0.65" />
+          <rect x="22" y="18" width="8" height="4" rx="1" stroke={c} strokeWidth="0.8" opacity="0.65" />
+          <rect x="10" y="26" width="20" height="4" rx="1" stroke={c} strokeWidth="0.8" opacity="0.65" />
+          <circle cx="9" cy="10" r="1.5" fill={c} opacity="0.55" />
+          <circle cx="14" cy="10" r="1.5" fill={c} opacity="0.55" />
         </svg>
       );
     case "coaching":
       return (
         <svg viewBox="0 0 40 40" fill="none" className={shared} aria-hidden="true">
-          <path d="M20 6L34 34H6L20 6Z" stroke={c} strokeWidth="0.8" opacity="0.3" />
-          <path d="M20 14L28 30H12L20 14Z" stroke={c} strokeWidth="0.5" opacity="0.2" strokeDasharray="2 2" />
-          <circle cx="20" cy="22" r="3" fill={c} opacity="0.1" stroke={c} strokeWidth="0.5" />
-          <circle cx="20" cy="22" r="1" fill={c} opacity="0.7" />
+          <path d="M20 6L34 34H6L20 6Z" stroke={c} strokeWidth="0.8" opacity="0.5" />
+          <path d="M20 14L28 30H12L20 14Z" stroke={c} strokeWidth="0.5" opacity="0.35" strokeDasharray="2 2" />
+          <circle cx="20" cy="22" r="3" fill={c} opacity="0.2" stroke={c} strokeWidth="0.5" />
+          <circle cx="20" cy="22" r="1" fill={c} opacity="0.8" />
         </svg>
       );
     case "events":
       return (
         <svg viewBox="0 0 40 40" fill="none" className={shared} aria-hidden="true">
-          <circle cx="20" cy="20" r="16" stroke={c} strokeWidth="0.8" opacity="0.3" />
-          <circle cx="20" cy="20" r="10" stroke={c} strokeWidth="0.5" opacity="0.15" />
-          <circle cx="20" cy="20" r="4" stroke={c} strokeWidth="0.5" opacity="0.2" />
+          <circle cx="20" cy="20" r="16" stroke={c} strokeWidth="0.8" opacity="0.5" />
+          <circle cx="20" cy="20" r="10" stroke={c} strokeWidth="0.5" opacity="0.3" />
+          <circle cx="20" cy="20" r="4" stroke={c} strokeWidth="0.5" opacity="0.35" />
           {[0, 60, 120, 180, 240, 300].map((angle) => {
             const r = 16;
             const x = 20 + r * Math.cos((angle * Math.PI) / 180);
             const y = 20 + r * Math.sin((angle * Math.PI) / 180);
-            return <circle key={angle} cx={x} cy={y} r="1.5" fill={c} opacity="0.5" />;
+            return <circle key={angle} cx={x} cy={y} r="1.5" fill={c} opacity="0.6" />;
           })}
-          <circle cx="20" cy="20" r="2" fill={c} opacity="0.6" />
+          <circle cx="20" cy="20" r="2" fill={c} opacity="0.7" />
         </svg>
       );
     case "education":
       return (
         <svg viewBox="0 0 40 40" fill="none" className={shared} aria-hidden="true">
-          <rect x="8" y="4" width="24" height="32" rx="2" stroke={c} strokeWidth="0.8" opacity="0.3" />
-          <line x1="14" y1="12" x2="28" y2="12" stroke={c} strokeWidth="0.8" opacity="0.4" />
-          <line x1="14" y1="17" x2="26" y2="17" stroke={c} strokeWidth="0.5" opacity="0.25" />
-          <line x1="14" y1="22" x2="24" y2="22" stroke={c} strokeWidth="0.5" opacity="0.25" />
-          <line x1="14" y1="27" x2="22" y2="27" stroke={c} strokeWidth="0.5" opacity="0.25" />
-          <rect x="8" y="4" width="4" height="32" rx="1" fill={c} opacity="0.06" />
+          <rect x="8" y="4" width="24" height="32" rx="2" stroke={c} strokeWidth="0.8" opacity="0.5" />
+          <line x1="14" y1="12" x2="28" y2="12" stroke={c} strokeWidth="0.8" opacity="0.55" />
+          <line x1="14" y1="17" x2="26" y2="17" stroke={c} strokeWidth="0.5" opacity="0.4" />
+          <line x1="14" y1="22" x2="24" y2="22" stroke={c} strokeWidth="0.5" opacity="0.4" />
+          <line x1="14" y1="27" x2="22" y2="27" stroke={c} strokeWidth="0.5" opacity="0.4" />
+          <rect x="8" y="4" width="4" height="32" rx="1" fill={c} opacity="0.1" />
         </svg>
       );
     default:
@@ -271,10 +271,10 @@ function AsciiFrame({ children, className = "", highlight = false }: { children:
       <span className={`absolute -top-1 -right-1 font-[family-name:var(--font-geist-mono)] text-xs ${highlight ? "text-[var(--accent)] opacity-60" : "text-[var(--gray)] opacity-40"}`}>┐</span>
       <span className={`absolute -bottom-1 -left-1 font-[family-name:var(--font-geist-mono)] text-xs ${highlight ? "text-[var(--accent)] opacity-60" : "text-[var(--gray)] opacity-40"}`}>└</span>
       <span className={`absolute -bottom-1 -right-1 font-[family-name:var(--font-geist-mono)] text-xs ${highlight ? "text-[var(--accent)] opacity-60" : "text-[var(--gray)] opacity-40"}`}>┘</span>
-      <div className={`absolute top-0 left-3 right-3 h-px ${highlight ? "bg-[var(--accent)] opacity-30" : "bg-[var(--border)] opacity-15"}`} />
-      <div className={`absolute bottom-0 left-3 right-3 h-px ${highlight ? "bg-[var(--accent)] opacity-30" : "bg-[var(--border)] opacity-15"}`} />
-      <div className={`absolute left-0 top-3 bottom-3 w-px ${highlight ? "bg-[var(--accent)] opacity-30" : "bg-[var(--border)] opacity-15"}`} />
-      <div className={`absolute right-0 top-3 bottom-3 w-px ${highlight ? "bg-[var(--accent)] opacity-30" : "bg-[var(--border)] opacity-15"}`} />
+      <div className={`absolute top-0 left-3 right-3 h-px ${highlight ? "bg-[var(--accent)] opacity-30" : "bg-[var(--border)] opacity-40"}`} />
+      <div className={`absolute bottom-0 left-3 right-3 h-px ${highlight ? "bg-[var(--accent)] opacity-30" : "bg-[var(--border)] opacity-40"}`} />
+      <div className={`absolute left-0 top-3 bottom-3 w-px ${highlight ? "bg-[var(--accent)] opacity-30" : "bg-[var(--border)] opacity-40"}`} />
+      <div className={`absolute right-0 top-3 bottom-3 w-px ${highlight ? "bg-[var(--accent)] opacity-30" : "bg-[var(--border)] opacity-40"}`} />
       {children}
     </div>
   );
@@ -299,7 +299,7 @@ function MemberAvatar({ initials, isFounder }: { initials: string; isFounder: bo
         x="28" y="28"
         textAnchor="middle"
         dominantBaseline="central"
-        fill={isFounder ? "var(--gold)" : "var(--gray-light)"}
+        fill={isFounder ? "var(--accent)" : "var(--gray-light)"}
         fontSize="14"
         fontFamily="serif"
         opacity={isFounder ? 0.8 : 0.5}
@@ -351,7 +351,7 @@ function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[var(--background)]/90 backdrop-blur-md border-b border-[var(--border)]/10"
+          ? "bg-[var(--background)]/90 backdrop-blur-md border-b border-[var(--border)]/30"
           : "bg-transparent"
       }`}
     >
@@ -385,7 +385,7 @@ function Navbar() {
 
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden flex flex-col gap-[5px] group focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--gold)] focus-visible:outline-offset-4 rounded-sm"
+          className="md:hidden flex flex-col gap-[5px] group focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--accent)] focus-visible:outline-offset-4 rounded-sm"
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
         >
@@ -396,7 +396,7 @@ function Navbar() {
       </div>
 
       <div className={`md:hidden overflow-hidden transition-all duration-500 ${menuOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"}`}>
-        <div className="px-6 pb-8 pt-2 bg-[var(--background)]/95 backdrop-blur-lg border-t border-[var(--border)]/10 flex flex-col gap-5">
+        <div className="px-6 pb-8 pt-2 bg-[var(--background)]/95 backdrop-blur-lg border-t border-[var(--border)]/30 flex flex-col gap-5">
           {NAV_LINKS.map((link) => {
             const isActive = activeSection === link.href.slice(1);
             return (
@@ -632,17 +632,10 @@ function TrianguloVital() {
             {/* Enhanced SVG Triangle */}
             <div className="flex justify-center">
               <div className="relative w-full max-w-md aspect-square">
-                <svg viewBox="0 0 400 400" className="w-full h-full" fill="none">
+                <svg viewBox="0 0 400 400" className="w-full h-full" fill="none" aria-hidden="true">
                   <defs>
-                    <filter id="glow">
-                      <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-                      <feMerge>
-                        <feMergeNode in="coloredBlur" />
-                        <feMergeNode in="SourceGraphic" />
-                      </feMerge>
-                    </filter>
                     <radialGradient id="centerGlow" cx="50%" cy="55%" r="30%">
-                      <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.08" />
+                      <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.06" />
                       <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
                     </radialGradient>
                   </defs>
@@ -661,7 +654,6 @@ function TrianguloVital() {
                     opacity="0.5"
                     fill="var(--accent)"
                     fillOpacity="0.02"
-                    filter="url(#glow)"
                   />
 
                   {/* Inner triangle */}
@@ -682,12 +674,12 @@ function TrianguloVital() {
                   {/* Center rings */}
                   <circle cx="200" cy="230" r="32" stroke="var(--accent)" strokeWidth="0.6" opacity="0.25" />
                   <circle cx="200" cy="230" r="22" stroke="var(--accent)" strokeWidth="0.3" opacity="0.15" strokeDasharray="2 3" />
-                  <circle cx="200" cy="230" r="5" fill="var(--accent)" opacity="0.5" filter="url(#glow)" />
+                  <circle cx="200" cy="230" r="5" fill="var(--accent)" opacity="0.5" />
 
                   {/* Vertex nodes — animated via CSS */}
-                  <circle cx="200" cy="50" r="6" fill="var(--accent)" opacity="0.7" filter="url(#glow)" />
-                  <circle cx="375" cy="350" r="6" fill="var(--accent)" opacity="0.7" filter="url(#glow)" />
-                  <circle cx="25" cy="350" r="6" fill="var(--accent)" opacity="0.7" filter="url(#glow)" />
+                  <circle cx="200" cy="50" r="6" fill="var(--accent)" opacity="0.7" />
+                  <circle cx="375" cy="350" r="6" fill="var(--accent)" opacity="0.7" />
+                  <circle cx="25" cy="350" r="6" fill="var(--accent)" opacity="0.7" />
 
                   {/* Outer rings on vertices */}
                   <circle cx="200" cy="50" r="12" stroke="var(--accent)" strokeWidth="0.4" opacity="0.2" />
@@ -794,7 +786,7 @@ function HumanismoDigital() {
             </p>
           </div>
 
-          <div className="w-full h-px bg-gradient-to-r from-transparent via-[var(--gold-dim)] to-transparent opacity-20 mb-12" />
+          <div className="w-full h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent opacity-40 mb-12" />
 
           <p className="font-[family-name:var(--font-geist-mono)] text-sm leading-[1.9] text-[var(--gray-light)] mb-16 max-w-3xl mx-auto text-center">
             Aceptar que la tecnología está ya entre nosotros y que viene
@@ -809,7 +801,7 @@ function HumanismoDigital() {
             {PRINCIPLES.map((principle, i) => (
               <div
                 key={i}
-                className="group flex gap-4 md:gap-6 py-5 md:py-6 border-b border-[var(--border)]/10 hover:bg-[var(--accent)]/[0.02] hover:pl-2 transition-all duration-300"
+                className="group flex gap-4 md:gap-6 py-5 md:py-6 border-b border-[var(--border)]/30 hover:bg-[var(--accent)]/[0.02] hover:pl-2 transition-all duration-300"
               >
                 <span className="font-[family-name:var(--font-geist-mono)] text-sm md:text-base text-[var(--accent)] font-bold min-w-[2.5rem] text-right tabular-nums text-glow">
                   {String(i + 1).padStart(2, "0")}
@@ -1023,7 +1015,7 @@ function Contacto() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center gap-4 py-3 border-b border-[var(--border)]/10 hover:border-[var(--accent)]/20 transition-colors"
+                      className="group flex items-center gap-4 py-3 border-b border-[var(--border)]/30 hover:border-[var(--accent)]/20 transition-colors"
                     >
                       <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gray)] w-8">
                         {social.symbol}
@@ -1055,7 +1047,7 @@ function Contacto() {
 
 function Footer() {
   return (
-    <footer className="relative px-6 md:px-16 lg:px-24 py-10 border-t border-[var(--border)]/10">
+    <footer className="relative px-6 md:px-16 lg:px-24 py-10 border-t border-[var(--border)]/30">
       {/* Decorative SVG line */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <svg viewBox="0 0 80 16" fill="none" className="w-20 h-4">
