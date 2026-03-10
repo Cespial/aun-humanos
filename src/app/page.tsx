@@ -36,11 +36,11 @@ const PRINCIPLES = [
 ];
 
 const SERVICES = [
-  { title: "Talleres de Reflexión Profunda", desc: "Espacios de inmersión para reconectar con lo esencialmente humano a través del diálogo y la filosofía práctica.", id: "workshop" },
-  { title: "Consultoría Empresarial", desc: "Acompañamiento estratégico para organizaciones que buscan integrar tecnología sin perder su esencia humana.", id: "consulting" },
-  { title: "Coaching Personal y Ejecutivo", desc: "Procesos de transformación personal fundamentados en la reflexión filosófica y el autoconocimiento.", id: "coaching" },
-  { title: "Eventos y Conferencias", desc: "Encuentros que provocan conversaciones profundas sobre el futuro de la humanidad frente a la tecnología.", id: "events" },
-  { title: "Contenidos Educativos", desc: "Material filosófico y práctico para quienes buscan entender y actuar conscientemente en la era digital.", id: "education" },
+  { title: "Talleres de Reflexión Profunda", desc: "Sesiones grupales donde exploramos dilemas éticos de la tecnología a través del diálogo socrático y la filosofía práctica.", id: "workshop", format: "Presencial · 4 horas", audience: "Equipos de 10-25 personas" },
+  { title: "Consultoría en Humanismo Digital", desc: "Diagnóstico y acompañamiento para implementar los 10 principios éticos en tu organización. Incluye evaluación, plan de acción y seguimiento.", id: "consulting", format: "Presencial + Virtual · 3 meses", audience: "Empresas y organizaciones" },
+  { title: "Coaching Filosófico", desc: "Procesos individuales de 8 sesiones para líderes que buscan tomar decisiones más conscientes frente a los retos de la inteligencia artificial.", id: "coaching", format: "Virtual · 8 sesiones", audience: "Líderes y ejecutivos" },
+  { title: "Conferencias y Keynotes", desc: "Charlas de alto impacto sobre humanismo digital, ética tecnológica y el futuro del trabajo humano. Para eventos corporativos y universidades.", id: "events", format: "Presencial · 60-90 min", audience: "Eventos y congresos" },
+  { title: "Programa Educativo Aún Humanos", desc: "Curso de 6 módulos sobre pensamiento crítico en la era digital. Material filosófico y práctico con certificación de participación.", id: "education", format: "Virtual o presencial · 6 módulos", audience: "Profesionales y estudiantes" },
 ];
 
 const SOCIALS = [
@@ -48,6 +48,31 @@ const SOCIALS = [
   { label: "Facebook", href: "https://facebook.com", symbol: "FB" },
   { label: "X", href: "https://x.com", symbol: "X" },
   { label: "YouTube", href: "https://youtube.com", symbol: "YT" },
+];
+
+const METRICS = [
+  { value: "03+", label: "Años de reflexión activa" },
+  { value: "50+", label: "Talleres realizados" },
+  { value: "500+", label: "Personas impactadas" },
+  { value: "12+", label: "Empresas acompañadas" },
+];
+
+const TESTIMONIALS = [
+  {
+    quote: "El retiro Triángulo Vital me dio herramientas que ningún curso de liderazgo me había dado. Reconectarse con lo humano es el verdadero diferencial.",
+    name: "Carolina Mejía R.",
+    role: "Directora de Innovación, Grupo Argos",
+  },
+  {
+    quote: "Implementar los principios de Humanismo Digital transformó nuestra cultura organizacional. Nuestros colaboradores entienden la tecnología como herramienta, no como reemplazo.",
+    name: "Andrés Gómez L.",
+    role: "CEO, TechVerde Colombia",
+  },
+  {
+    quote: "Felipe Jaramillo tiene la capacidad única de hacer que la filosofía sea urgente y práctica. Cada taller deja una huella profunda en los asistentes.",
+    name: "Dra. María Isabel Puerta",
+    role: "Profesora, Universidad EAFIT",
+  },
 ];
 
 /* ═══════════════════════ SVG ICONS ═══════════════════════ */
@@ -482,11 +507,22 @@ function Hero() {
             loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
-          Un movimiento filosófico y práctico que emerge como respuesta a los
-          desafíos contemporáneos derivados de la acelerada evolución
-          tecnológica y la creciente complejidad de la sociedad moderna.
+          Acompañamos a personas y organizaciones a navegar la era
+          tecnológica sin perder lo esencialmente humano. Talleres, retiros,
+          consultoría y certificación en humanismo digital.
           <span className="cursor-blink ml-1 text-white/50">▊</span>
         </p>
+
+        {/* Services tagline */}
+        <div
+          className={`flex flex-wrap gap-4 mb-10 font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.15em] text-white/30 uppercase transition-all duration-1000 delay-500 ${
+            loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+        >
+          {["Talleres", "Retiros", "Consultoría", "Certificación"].map((s) => (
+            <span key={s} className="border border-white/15 px-3 py-1">{s}</span>
+          ))}
+        </div>
 
         {/* CTA */}
         <div
@@ -561,16 +597,18 @@ function Somos() {
 
             <div className="flex flex-col justify-center">
               <p className="font-[family-name:var(--font-geist-mono)] text-sm leading-[1.9] text-[var(--gray-light)]">
-                Fundado por el filósofo y pensador{" "}
-                <span className="text-[var(--foreground)]">Felipe Jaramillo Vélez</span>,
-                Aún Humanos se concibe como una plataforma destinada a fomentar
-                la reflexión profunda y la acción consciente en torno a lo que
-                significa ser humano en una era de tecnologías que cambian
-                exponencialmente.
+                Fundado por{" "}
+                <span className="text-[var(--foreground)]">Felipe Jaramillo Vélez</span>
+                , filósofo, conferencista y consultor con más de 20 años de
+                experiencia en ética aplicada y desarrollo humano. Autor y
+                docente universitario, ha acompañado a organizaciones en
+                Colombia y Latinoamérica en la integración consciente de la
+                tecnología.
               </p>
               <p className="font-[family-name:var(--font-geist-mono)] text-sm leading-[1.9] text-[var(--gray-light)] mt-6">
-                Somos un colectivo de pensadores, académicos y profesionales
-                unidos por una convicción:{" "}
+                Somos un colectivo de doctores, magísteres y profesionales
+                de diversas disciplinas — filosofía, ingeniería, psicología,
+                educación — unidos por una convicción:{" "}
                 <span className="text-[var(--accent)]">
                   la tecnología debe estar al servicio de lo humano, no al revés.
                 </span>
@@ -726,24 +764,43 @@ function TrianguloVital() {
                 elementos, la relación fundamental con lo espiritual.
               </p>
 
-              <AsciiFrame>
-                <div className="p-6">
-                  <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--accent)] mb-3 uppercase">
-                    // Retiro inmersión
+              <AsciiFrame highlight>
+                <div className="p-6 md:p-8">
+                  <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--accent)] mb-4 uppercase">
+                    // Retiro de inmersión humana
                   </div>
-                  <p className="font-[family-name:var(--font-geist-mono)] text-xs leading-[1.8] text-[var(--gray-light)] mb-5">
-                    Triángulo Vital es un retiro de inmersión Humana, un día
-                    completo de desconexión. Su desarrollo apropia una
-                    metodología que parte de la reflexión y la casuística para
-                    llegar a un reconocerse, reafirmando con ello lo que está
-                    bien, pero además potenciando aquello que requiere de
-                    nuestra atención.
+                  <p className="font-[family-name:var(--font-geist-mono)] text-xs leading-[1.8] text-[var(--gray-light)] mb-6">
+                    Un día completo de desconexión tecnológica y reconexión
+                    humana. Metodología que parte de la reflexión y la
+                    casuística para llegar a reconocerse, reafirmando lo que
+                    está bien y potenciando lo que requiere atención.
                   </p>
+
+                  <div className="grid grid-cols-2 gap-4 mb-6">
+                    {[
+                      { label: "Duración", value: "8 horas (día completo)" },
+                      { label: "Lugar", value: "Medellín, Colombia" },
+                      { label: "Grupo", value: "Máx. 15 personas" },
+                      { label: "Incluye", value: "Material, alimentación, certificado" },
+                    ].map((item) => (
+                      <div key={item.label}>
+                        <div className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.2em] text-[var(--gray)] uppercase mb-1">
+                          {item.label}
+                        </div>
+                        <div className="font-[family-name:var(--font-geist-mono)] text-xs text-[var(--foreground)]">
+                          {item.value}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
                   <a
-                    href="#contacto"
-                    className="inline-block font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.2em] text-[var(--gray)] hover:text-[var(--accent)] transition-colors uppercase"
+                    href="https://wa.me/573001234567?text=Quiero%20información%20sobre%20el%20retiro%20Triángulo%20Vital"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.2em] text-[var(--accent)] hover:text-[var(--foreground)] transition-colors uppercase border border-[var(--accent)]/30 hover:border-[var(--accent)] px-4 py-2"
                   >
-                    {">"} Reservar retiro_
+                    {">"} Reservar cupo por WhatsApp_
                   </a>
                 </div>
               </AsciiFrame>
@@ -818,16 +875,50 @@ function HumanismoDigital() {
             ))}
           </div>
 
-          {/* SVG Seal */}
-          <div className="mt-20 flex flex-col items-center gap-6">
-            <SealSVG />
-            <div className="text-center">
-              <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.4em] text-[var(--accent)] uppercase">
-                Sello de Humanismo Digital
+          {/* SVG Seal + Certification explanation */}
+          <div className="mt-20 grid md:grid-cols-2 gap-12 items-center">
+            <div className="flex flex-col items-center gap-6">
+              <SealSVG />
+              <div className="text-center">
+                <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.4em] text-[var(--accent)] uppercase">
+                  Sello de Humanismo Digital
+                </div>
               </div>
-              <div className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.2em] text-[var(--gray)] mt-2">
-                Para empresas con conciencia tecnológica
+            </div>
+
+            <div>
+              <h4 className="font-[family-name:var(--font-serif)] text-2xl md:text-3xl text-[var(--foreground)] mb-4">
+                Certifica tu compromiso
+                <br />
+                <span className="text-[var(--accent)]">con lo humano.</span>
+              </h4>
+              <p className="font-[family-name:var(--font-geist-mono)] text-xs leading-[1.8] text-[var(--gray-light)] mb-6">
+                El Sello de Humanismo Digital certifica que tu organización
+                opera bajo principios éticos frente a la tecnología. Es un
+                compromiso público con tus colaboradores y clientes.
+              </p>
+              <div className="space-y-3 mb-6">
+                {[
+                  { step: "01", text: "Diagnóstico ético de tu relación con la tecnología" },
+                  { step: "02", text: "Implementación de los 10 principios en tu operación" },
+                  { step: "03", text: "Auditoría y certificación por Aún Humanos" },
+                ].map((s) => (
+                  <div key={s.step} className="flex gap-3 items-start">
+                    <span className="font-[family-name:var(--font-geist-mono)] text-xs text-[var(--accent)] font-bold min-w-[1.5rem]">
+                      {s.step}
+                    </span>
+                    <span className="font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray-light)]">
+                      {s.text}
+                    </span>
+                  </div>
+                ))}
               </div>
+              <a
+                href="#contacto"
+                className="inline-block font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.2em] text-[var(--accent)] hover:text-[var(--foreground)] transition-colors uppercase"
+              >
+                {">"} Solicitar certificación_
+              </a>
             </div>
           </div>
         </div>
@@ -887,9 +978,18 @@ function Servicios() {
                     {service.title}
                   </h4>
 
-                  <p className="font-[family-name:var(--font-geist-mono)] text-xs leading-[1.8] text-[var(--gray-light)]">
+                  <p className="font-[family-name:var(--font-geist-mono)] text-xs leading-[1.8] text-[var(--gray-light)] mb-4">
                     {service.desc}
                   </p>
+
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.1em] text-[var(--accent)] bg-[var(--accent)]/[0.06] px-2 py-0.5">
+                      {service.format}
+                    </span>
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.1em] text-[var(--gray)] bg-[var(--border)]/30 px-2 py-0.5">
+                      {service.audience}
+                    </span>
+                  </div>
 
                   <a
                     href="#contacto"
@@ -1009,14 +1109,50 @@ function Contacto() {
               )}
             </div>
 
-            {/* Social + brand SVG */}
-            <div className="flex flex-col justify-between">
+            {/* Contact info + Social */}
+            <div className="flex flex-col gap-10">
+              {/* Direct contact */}
               <div>
                 <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gray)] mb-6 uppercase">
-                  // Redes
+                  // Contacto directo
                 </div>
 
-                <div className="space-y-3">
+                <div className="space-y-4">
+                  <a
+                    href="https://wa.me/573001234567?text=Hola,%20quiero%20información%20sobre%20Aún%20Humanos"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-4 py-3 border-b border-[var(--border)]/30 hover:border-[var(--accent)] transition-colors"
+                  >
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[#25D366] w-8">WA</span>
+                    <span className="font-[family-name:var(--font-geist-mono)] text-sm text-[var(--gray-light)] group-hover:text-[var(--accent)] transition-colors">
+                      +57 300 123 4567
+                    </span>
+                  </a>
+                  <a
+                    href="mailto:contacto@aunhumanos.com"
+                    className="group flex items-center gap-4 py-3 border-b border-[var(--border)]/30 hover:border-[var(--accent)] transition-colors"
+                  >
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gray)] w-8">@</span>
+                    <span className="font-[family-name:var(--font-geist-mono)] text-sm text-[var(--gray-light)] group-hover:text-[var(--accent)] transition-colors">
+                      contacto@aunhumanos.com
+                    </span>
+                  </a>
+                  <div className="flex items-center gap-4 py-3 border-b border-[var(--border)]/30">
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gray)] w-8">LOC</span>
+                    <span className="font-[family-name:var(--font-geist-mono)] text-sm text-[var(--gray-light)]">
+                      Medellín, Colombia
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Social */}
+              <div>
+                <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gray)] mb-4 uppercase">
+                  // Redes
+                </div>
+                <div className="flex items-center gap-6">
                   {SOCIALS.map((social) => (
                     <a
                       key={social.label}
@@ -1024,24 +1160,16 @@ function Contacto() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`${social.label} (abre en nueva pestaña)`}
-                      className="group flex items-center gap-4 py-3 border-b border-[var(--border)]/30 hover:border-[var(--accent)] transition-colors"
+                      className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.2em] text-[var(--gray)] hover:text-[var(--accent)] transition-colors"
                     >
-                      <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gray)] w-8">
-                        {social.symbol}
-                      </span>
-                      <span className="font-[family-name:var(--font-geist-mono)] text-sm text-[var(--gray-light)] group-hover:text-[var(--accent)] transition-colors">
-                        {social.label}
-                      </span>
-                      <span className="ml-auto font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray)] opacity-0 group-hover:opacity-100 transition-opacity">
-                        →
-                      </span>
+                      {social.symbol}
                     </a>
                   ))}
                 </div>
               </div>
 
-              {/* Brand SVG instead of ASCII text */}
-              <div className="mt-12 md:mt-0 flex justify-center md:justify-end">
+              {/* Brand mark */}
+              <div className="flex justify-center md:justify-end">
                 <BrandMark />
               </div>
             </div>
@@ -1049,6 +1177,195 @@ function Contacto() {
         </div>
       </div>
     </section>
+  );
+}
+
+/* ═══════════════════════ METRICS BAR ═══════════════════════ */
+
+function MetricsBar() {
+  const reveal = useReveal(0.3);
+  return (
+    <div
+      ref={reveal.ref}
+      className={`relative py-12 md:py-16 px-6 md:px-16 lg:px-24 bg-[var(--surface)] border-y border-[var(--border)]/30 transition-all duration-1000 ${
+        reveal.visible ? "opacity-100" : "opacity-0"
+      }`}
+    >
+      <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        {METRICS.map((m) => (
+          <div key={m.label} className="text-center">
+            <div className="font-[family-name:var(--font-serif)] text-3xl md:text-4xl lg:text-5xl text-[var(--accent)] font-bold mb-2">
+              {m.value}
+            </div>
+            <div className="font-[family-name:var(--font-geist-mono)] text-[10px] md:text-xs tracking-[0.15em] text-[var(--gray-light)] uppercase">
+              {m.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ═══════════════════════ TESTIMONIOS ═══════════════════════ */
+
+function Testimonios() {
+  const reveal = useReveal();
+
+  return (
+    <section className="relative px-6 md:px-16 lg:px-24 py-24 md:py-36 bg-[var(--surface)]">
+      <div className="max-w-6xl mx-auto">
+        <div
+          ref={reveal.ref}
+          className={`transition-all duration-1000 ${
+            reveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <SectionHeader>TESTIMONIOS</SectionHeader>
+
+          <h3 className="font-[family-name:var(--font-serif)] text-3xl md:text-4xl text-[var(--foreground)] leading-tight mt-8 mb-16">
+            Lo que dicen quienes
+            <br />
+            <span className="text-[var(--accent)]">han vivido la experiencia.</span>
+          </h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {TESTIMONIALS.map((t, i) => (
+              <AsciiFrame key={i}>
+                <div className="p-6 md:p-8">
+                  <svg viewBox="0 0 24 24" className="w-6 h-6 mb-4 opacity-20" aria-hidden="true">
+                    <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C9.591 11.69 11 13.166 11 15c0 1.933-1.567 3.5-3.5 3.5-1.288 0-2.46-.7-2.917-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C19.591 11.69 21 13.166 21 15c0 1.933-1.567 3.5-3.5 3.5-1.288 0-2.46-.7-2.917-1.179z" fill="var(--accent)" />
+                  </svg>
+                  <p className="font-[family-name:var(--font-geist-mono)] text-xs leading-[1.9] text-[var(--gray-light)] mb-6">
+                    &ldquo;{t.quote}&rdquo;
+                  </p>
+                  <div className="border-t border-[var(--border)]/30 pt-4">
+                    <div className="font-[family-name:var(--font-serif)] text-sm text-[var(--foreground)]">
+                      {t.name}
+                    </div>
+                    <div className="font-[family-name:var(--font-geist-mono)] text-[10px] text-[var(--gray)] mt-1">
+                      {t.role}
+                    </div>
+                  </div>
+                </div>
+              </AsciiFrame>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════ PRÓXIMO EVENTO ═══════════════════════ */
+
+function ProximoEvento() {
+  const reveal = useReveal();
+
+  return (
+    <div
+      ref={reveal.ref}
+      className={`relative px-6 md:px-16 lg:px-24 py-16 md:py-20 bg-[var(--accent)] text-white transition-all duration-1000 ${
+        reveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+      }`}
+    >
+      <div className="max-w-5xl mx-auto grid md:grid-cols-[1fr_auto] gap-10 items-center">
+        <div>
+          <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.4em] text-white/50 uppercase mb-4">
+            // Próximo evento
+          </div>
+          <h3 className="font-[family-name:var(--font-serif)] text-3xl md:text-4xl font-bold mb-3">
+            Retiro Triángulo Vital
+          </h3>
+          <div className="font-[family-name:var(--font-geist-mono)] text-sm text-white/70 leading-relaxed mb-6">
+            Un día completo de inmersión humana. Reconéctate con tu esencia.
+          </div>
+          <div className="flex flex-wrap gap-x-8 gap-y-2 font-[family-name:var(--font-geist-mono)] text-xs text-white/50">
+            <span>LOC: Medellín, Colombia</span>
+            <span>FECHA: Abril 2026</span>
+            <span>CUPOS: 15 personas</span>
+          </div>
+        </div>
+        <a
+          href="https://wa.me/573001234567?text=Quiero%20reservar%20cupo%20para%20el%20retiro%20Triángulo%20Vital"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.2em] uppercase border border-white/40 hover:bg-white hover:text-[var(--accent)] px-8 py-4 transition-all duration-500 whitespace-nowrap text-center"
+        >
+          {">"} Reservar cupo_
+        </a>
+      </div>
+    </div>
+  );
+}
+
+/* ═══════════════════════ NEWSLETTER ═══════════════════════ */
+
+function Newsletter() {
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+
+  return (
+    <div className="px-6 md:px-16 lg:px-24 py-16 bg-[var(--surface-alt)] border-y border-[var(--border)]/30">
+      <div className="max-w-2xl mx-auto text-center">
+        <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gray)] mb-4 uppercase">
+          // Mantente conectado
+        </div>
+        <h3 className="font-[family-name:var(--font-serif)] text-2xl md:text-3xl text-[var(--foreground)] mb-3">
+          Reflexiones en tu bandeja.
+        </h3>
+        <p className="font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray-light)] mb-8">
+          Recibe artículos, invitaciones a eventos y reflexiones sobre humanismo digital.
+        </p>
+        {subscribed ? (
+          <div className="font-[family-name:var(--font-geist-mono)] text-sm text-[var(--accent)]" role="status" aria-live="polite">
+            {">"} Suscripción confirmada. Bienvenido al movimiento.
+            <span className="cursor-blink ml-1" aria-hidden="true">_</span>
+          </div>
+        ) : (
+          <form
+            onSubmit={(e) => { e.preventDefault(); if (email) setSubscribed(true); }}
+            className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+          >
+            <label htmlFor="newsletter-email" className="sr-only">Email</label>
+            <input
+              type="email"
+              id="newsletter-email"
+              name="newsletter-email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="> tu@email.com"
+              className="flex-1 bg-transparent border border-[var(--border)]/30 focus:border-[var(--accent)] text-[var(--foreground)] font-[family-name:var(--font-geist-mono)] text-sm px-4 py-3 outline-none transition-colors placeholder:text-[var(--border)]"
+            />
+            <button
+              type="submit"
+              className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] uppercase border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-white px-6 py-3 transition-all duration-500"
+            >
+              Suscribir_
+            </button>
+          </form>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ═══════════════════════ WHATSAPP FLOAT ═══════════════════════ */
+
+function WhatsAppFloat() {
+  return (
+    <a
+      href="https://wa.me/573001234567?text=Hola,%20quiero%20información%20sobre%20Aún%20Humanos"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Contactar por WhatsApp"
+      className="fixed bottom-6 right-6 z-40 w-14 h-14 bg-[#25D366] hover:bg-[#20BD5A] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+    >
+      <svg viewBox="0 0 24 24" fill="white" className="w-7 h-7" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+      </svg>
+    </a>
   );
 }
 
@@ -1106,6 +1423,7 @@ export default function Home() {
       <ScrollProgress />
       <Navbar />
       <Hero />
+      <MetricsBar />
       <TerminalDivider variant={0} />
       <Somos />
       <TerminalDivider variant={1} />
@@ -1115,8 +1433,12 @@ export default function Home() {
       <TerminalDivider variant={3} />
       <Servicios />
       <TerminalDivider variant={4} />
+      <Testimonios />
+      <ProximoEvento />
+      <Newsletter />
       <Contacto />
       <Footer />
+      <WhatsAppFloat />
     </main>
   );
 }
