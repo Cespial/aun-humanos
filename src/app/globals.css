@@ -176,6 +176,21 @@ body {
   animation: glitch 0.3s ease-in-out;
 }
 
+/* Focus-visible for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 3px;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  border-color: var(--gold) !important;
+}
+
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;

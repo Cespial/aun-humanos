@@ -54,12 +54,12 @@ const SOCIALS = [
 
 function ServiceIcon({ type, className = "" }: { type: string; className?: string }) {
   const c = "var(--gold)";
-  const shared = `w-10 h-10 ${className}`;
+  const shared = `w-10 h-10 ${className}` as const;
 
   switch (type) {
     case "workshop":
       return (
-        <svg viewBox="0 0 40 40" fill="none" className={shared}>
+        <svg viewBox="0 0 40 40" fill="none" className={shared} aria-hidden="true">
           <circle cx="20" cy="20" r="18" stroke={c} strokeWidth="0.8" opacity="0.3" />
           <circle cx="20" cy="20" r="12" stroke={c} strokeWidth="0.5" opacity="0.2" strokeDasharray="3 3" />
           <path d="M14 20h12M20 14v12" stroke={c} strokeWidth="1.2" opacity="0.8" />
@@ -69,7 +69,7 @@ function ServiceIcon({ type, className = "" }: { type: string; className?: strin
       );
     case "consulting":
       return (
-        <svg viewBox="0 0 40 40" fill="none" className={shared}>
+        <svg viewBox="0 0 40 40" fill="none" className={shared} aria-hidden="true">
           <rect x="6" y="6" width="28" height="28" rx="2" stroke={c} strokeWidth="0.8" opacity="0.3" />
           <line x1="6" y1="14" x2="34" y2="14" stroke={c} strokeWidth="0.5" opacity="0.2" />
           <rect x="10" y="18" width="8" height="4" rx="1" stroke={c} strokeWidth="0.8" opacity="0.5" />
@@ -81,7 +81,7 @@ function ServiceIcon({ type, className = "" }: { type: string; className?: strin
       );
     case "coaching":
       return (
-        <svg viewBox="0 0 40 40" fill="none" className={shared}>
+        <svg viewBox="0 0 40 40" fill="none" className={shared} aria-hidden="true">
           <path d="M20 6L34 34H6L20 6Z" stroke={c} strokeWidth="0.8" opacity="0.3" />
           <path d="M20 14L28 30H12L20 14Z" stroke={c} strokeWidth="0.5" opacity="0.2" strokeDasharray="2 2" />
           <circle cx="20" cy="22" r="3" fill={c} opacity="0.1" stroke={c} strokeWidth="0.5" />
@@ -90,7 +90,7 @@ function ServiceIcon({ type, className = "" }: { type: string; className?: strin
       );
     case "events":
       return (
-        <svg viewBox="0 0 40 40" fill="none" className={shared}>
+        <svg viewBox="0 0 40 40" fill="none" className={shared} aria-hidden="true">
           <circle cx="20" cy="20" r="16" stroke={c} strokeWidth="0.8" opacity="0.3" />
           <circle cx="20" cy="20" r="10" stroke={c} strokeWidth="0.5" opacity="0.15" />
           <circle cx="20" cy="20" r="4" stroke={c} strokeWidth="0.5" opacity="0.2" />
@@ -105,7 +105,7 @@ function ServiceIcon({ type, className = "" }: { type: string; className?: strin
       );
     case "education":
       return (
-        <svg viewBox="0 0 40 40" fill="none" className={shared}>
+        <svg viewBox="0 0 40 40" fill="none" className={shared} aria-hidden="true">
           <rect x="8" y="4" width="24" height="32" rx="2" stroke={c} strokeWidth="0.8" opacity="0.3" />
           <line x1="14" y1="12" x2="28" y2="12" stroke={c} strokeWidth="0.8" opacity="0.4" />
           <line x1="14" y1="17" x2="26" y2="17" stroke={c} strokeWidth="0.5" opacity="0.25" />
@@ -121,7 +121,7 @@ function ServiceIcon({ type, className = "" }: { type: string; className?: strin
 
 function SealSVG() {
   return (
-    <svg viewBox="0 0 200 200" fill="none" className="w-40 h-40 md:w-48 md:h-48 svg-glow">
+    <svg viewBox="0 0 200 200" fill="none" className="w-40 h-40 md:w-48 md:h-48 svg-glow" role="img" aria-label="Sello de Humanismo Digital">
       <circle cx="100" cy="100" r="90" stroke="var(--gold)" strokeWidth="0.5" opacity="0.2" />
       <circle cx="100" cy="100" r="80" stroke="var(--gold)" strokeWidth="1" opacity="0.35" />
       <circle cx="100" cy="100" r="70" stroke="var(--gold)" strokeWidth="0.3" opacity="0.15" strokeDasharray="4 6" />
@@ -168,7 +168,7 @@ function SealSVG() {
 
 function ScrollChevron() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 animate-scroll-bounce">
+    <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 animate-scroll-bounce" aria-hidden="true">
       <path d="M6 9l6 6 6-6" stroke="var(--gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
@@ -176,7 +176,7 @@ function ScrollChevron() {
 
 function BrandMark() {
   return (
-    <svg viewBox="0 0 120 120" fill="none" className="w-24 h-24 md:w-32 md:h-32 opacity-[0.08]">
+    <svg viewBox="0 0 120 120" fill="none" className="w-24 h-24 md:w-32 md:h-32 opacity-[0.12]" aria-hidden="true">
       <circle cx="60" cy="60" r="55" stroke="var(--gold)" strokeWidth="0.5" />
       <circle cx="60" cy="60" r="45" stroke="var(--gold)" strokeWidth="0.3" strokeDasharray="3 5" />
       <text x="60" y="55" textAnchor="middle" fill="var(--gold)" fontSize="14" fontFamily="monospace" letterSpacing="0.15em" dominantBaseline="middle">
@@ -239,21 +239,6 @@ function useActiveSection() {
   return active;
 }
 
-function useScrollProgress() {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const handler = () => {
-      const h = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(h > 0 ? (window.scrollY / h) * 100 : 0);
-    };
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
-
-  return progress;
-}
-
 /* ═══════════════════ SHARED COMPONENTS ═══════════════════ */
 
 function SectionHeader({ children }: { children: string }) {
@@ -280,19 +265,16 @@ function TerminalDivider({ variant = 0 }: { variant?: number }) {
 }
 
 function AsciiFrame({ children, className = "", highlight = false }: { children: React.ReactNode; className?: string; highlight?: boolean }) {
-  const borderColor = highlight ? "var(--gold)" : "var(--gold-dim)";
-  const borderOpacity = highlight ? "opacity-30" : "opacity-15";
-  const cornerOpacity = highlight ? "opacity-60" : "opacity-40";
   return (
     <div className={`relative ${className}`}>
-      <span className={`absolute -top-1 -left-1 text-[${borderColor}] font-[family-name:var(--font-geist-mono)] text-xs ${cornerOpacity}`}>┌</span>
-      <span className={`absolute -top-1 -right-1 text-[${borderColor}] font-[family-name:var(--font-geist-mono)] text-xs ${cornerOpacity}`}>┐</span>
-      <span className={`absolute -bottom-1 -left-1 text-[${borderColor}] font-[family-name:var(--font-geist-mono)] text-xs ${cornerOpacity}`}>└</span>
-      <span className={`absolute -bottom-1 -right-1 text-[${borderColor}] font-[family-name:var(--font-geist-mono)] text-xs ${cornerOpacity}`}>┘</span>
-      <div className={`absolute top-0 left-3 right-3 h-px bg-[${borderColor}] ${borderOpacity}`} />
-      <div className={`absolute bottom-0 left-3 right-3 h-px bg-[${borderColor}] ${borderOpacity}`} />
-      <div className={`absolute left-0 top-3 bottom-3 w-px bg-[${borderColor}] ${borderOpacity}`} />
-      <div className={`absolute right-0 top-3 bottom-3 w-px bg-[${borderColor}] ${borderOpacity}`} />
+      <span className={`absolute -top-1 -left-1 font-[family-name:var(--font-geist-mono)] text-xs ${highlight ? "text-[var(--gold)] opacity-60" : "text-[var(--gold-dim)] opacity-40"}`}>┌</span>
+      <span className={`absolute -top-1 -right-1 font-[family-name:var(--font-geist-mono)] text-xs ${highlight ? "text-[var(--gold)] opacity-60" : "text-[var(--gold-dim)] opacity-40"}`}>┐</span>
+      <span className={`absolute -bottom-1 -left-1 font-[family-name:var(--font-geist-mono)] text-xs ${highlight ? "text-[var(--gold)] opacity-60" : "text-[var(--gold-dim)] opacity-40"}`}>└</span>
+      <span className={`absolute -bottom-1 -right-1 font-[family-name:var(--font-geist-mono)] text-xs ${highlight ? "text-[var(--gold)] opacity-60" : "text-[var(--gold-dim)] opacity-40"}`}>┘</span>
+      <div className={`absolute top-0 left-3 right-3 h-px ${highlight ? "bg-[var(--gold)] opacity-30" : "bg-[var(--gold-dim)] opacity-15"}`} />
+      <div className={`absolute bottom-0 left-3 right-3 h-px ${highlight ? "bg-[var(--gold)] opacity-30" : "bg-[var(--gold-dim)] opacity-15"}`} />
+      <div className={`absolute left-0 top-3 bottom-3 w-px ${highlight ? "bg-[var(--gold)] opacity-30" : "bg-[var(--gold-dim)] opacity-15"}`} />
+      <div className={`absolute right-0 top-3 bottom-3 w-px ${highlight ? "bg-[var(--gold)] opacity-30" : "bg-[var(--gold-dim)] opacity-15"}`} />
       {children}
     </div>
   );
@@ -300,7 +282,7 @@ function AsciiFrame({ children, className = "", highlight = false }: { children:
 
 function MemberAvatar({ initials, isFounder }: { initials: string; isFounder: boolean }) {
   return (
-    <svg viewBox="0 0 56 56" fill="none" className="w-14 h-14 mb-4">
+    <svg viewBox="0 0 56 56" fill="none" className="w-14 h-14 mb-4" aria-hidden="true">
       {isFounder ? (
         <>
           <circle cx="28" cy="28" r="26" stroke="var(--gold)" strokeWidth="1" opacity="0.4" />
@@ -331,8 +313,19 @@ function MemberAvatar({ initials, isFounder }: { initials: string; isFounder: bo
 /* ═══════════════════════ SCROLL PROGRESS ═══════════════════════ */
 
 function ScrollProgress() {
-  const progress = useScrollProgress();
-  return <div className="scroll-progress" style={{ width: `${progress}%` }} />;
+  const barRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handler = () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = h > 0 ? (window.scrollY / h) * 100 : 0;
+      if (barRef.current) barRef.current.style.width = `${pct}%`;
+    };
+    window.addEventListener("scroll", handler, { passive: true });
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+
+  return <div ref={barRef} className="scroll-progress" style={{ width: 0 }} />;
 }
 
 /* ═══════════════════════ NAVBAR ═══════════════════════ */
@@ -340,16 +333,19 @@ function ScrollProgress() {
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuOpenRef = useRef(false);
   const activeSection = useActiveSection();
+
+  useEffect(() => { menuOpenRef.current = menuOpen; }, [menuOpen]);
 
   useEffect(() => {
     const handler = () => {
       setScrolled(window.scrollY > 60);
-      if (menuOpen && window.scrollY > 100) setMenuOpen(false);
+      if (menuOpenRef.current && window.scrollY > 100) setMenuOpen(false);
     };
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
-  }, [menuOpen]);
+  }, []);
 
   return (
     <nav
@@ -389,8 +385,9 @@ function Navbar() {
 
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden flex flex-col gap-[5px] group"
+          className="md:hidden flex flex-col gap-[5px] group focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--gold)] focus-visible:outline-offset-4 rounded-sm"
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
         >
           <span className={`block w-6 h-px bg-[var(--gold)] transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-[6px]" : ""}`} />
           <span className={`block w-6 h-px bg-[var(--gold)] transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
