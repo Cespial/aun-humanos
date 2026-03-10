@@ -122,9 +122,9 @@ function ServiceIcon({ type, className = "" }: { type: string; className?: strin
 function SealSVG() {
   return (
     <svg viewBox="0 0 200 200" fill="none" className="w-40 h-40 md:w-48 md:h-48 svg-glow" role="img" aria-label="Sello de Humanismo Digital">
-      <circle cx="100" cy="100" r="90" stroke="var(--gold)" strokeWidth="0.5" opacity="0.2" />
-      <circle cx="100" cy="100" r="80" stroke="var(--gold)" strokeWidth="1" opacity="0.35" />
-      <circle cx="100" cy="100" r="70" stroke="var(--gold)" strokeWidth="0.3" opacity="0.15" strokeDasharray="4 6" />
+      <circle cx="100" cy="100" r="90" stroke="var(--accent)" strokeWidth="0.5" opacity="0.2" />
+      <circle cx="100" cy="100" r="80" stroke="var(--accent)" strokeWidth="1" opacity="0.35" />
+      <circle cx="100" cy="100" r="70" stroke="var(--accent)" strokeWidth="0.3" opacity="0.15" strokeDasharray="4 6" />
       {/* Outer notches */}
       {Array.from({ length: 36 }).map((_, i) => {
         const angle = (i * 10 * Math.PI) / 180;
@@ -133,13 +133,13 @@ function SealSVG() {
         const x2 = 100 + 88 * Math.cos(angle);
         const y2 = 100 + 88 * Math.sin(angle);
         return (
-          <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="var(--gold)" strokeWidth="0.5" opacity="0.25" />
+          <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="var(--accent)" strokeWidth="0.5" opacity="0.25" />
         );
       })}
       {/* Inner diamond */}
-      <path d="M100 55 L135 100 L100 145 L65 100 Z" stroke="var(--gold)" strokeWidth="0.8" opacity="0.3" fill="var(--gold)" fillOpacity="0.03" />
+      <path d="M100 55 L135 100 L100 145 L65 100 Z" stroke="var(--accent)" strokeWidth="0.8" opacity="0.3" fill="var(--accent)" fillOpacity="0.03" />
       {/* Center H */}
-      <text x="100" y="95" textAnchor="middle" fill="var(--gold)" fontSize="22" fontFamily="serif" opacity="0.7" dominantBaseline="middle">
+      <text x="100" y="95" textAnchor="middle" fill="var(--accent)" fontSize="22" fontFamily="serif" opacity="0.7" dominantBaseline="middle">
         H
       </text>
       {/* Circular text top */}
@@ -147,21 +147,21 @@ function SealSVG() {
         <path id="topArc" d="M30,100 a70,70 0 0,1 140,0" />
         <path id="bottomArc" d="M30,100 a70,70 0 0,0 140,0" />
       </defs>
-      <text fill="var(--gold)" fontSize="7" fontFamily="monospace" letterSpacing="0.3em" opacity="0.5">
+      <text fill="var(--accent)" fontSize="7" fontFamily="monospace" letterSpacing="0.3em" opacity="0.5">
         <textPath href="#topArc" startOffset="50%" textAnchor="middle">
           SELLO DE HUMANISMO
         </textPath>
       </text>
-      <text fill="var(--gold)" fontSize="7" fontFamily="monospace" letterSpacing="0.3em" opacity="0.5">
+      <text fill="var(--accent)" fontSize="7" fontFamily="monospace" letterSpacing="0.3em" opacity="0.5">
         <textPath href="#bottomArc" startOffset="50%" textAnchor="middle">
           DIGITAL CERTIFICADO
         </textPath>
       </text>
       {/* 4 corner dots */}
-      <circle cx="100" cy="55" r="2" fill="var(--gold)" opacity="0.5" />
-      <circle cx="135" cy="100" r="2" fill="var(--gold)" opacity="0.5" />
-      <circle cx="100" cy="145" r="2" fill="var(--gold)" opacity="0.5" />
-      <circle cx="65" cy="100" r="2" fill="var(--gold)" opacity="0.5" />
+      <circle cx="100" cy="55" r="2" fill="var(--accent)" opacity="0.5" />
+      <circle cx="135" cy="100" r="2" fill="var(--accent)" opacity="0.5" />
+      <circle cx="100" cy="145" r="2" fill="var(--accent)" opacity="0.5" />
+      <circle cx="65" cy="100" r="2" fill="var(--accent)" opacity="0.5" />
     </svg>
   );
 }
@@ -169,7 +169,7 @@ function SealSVG() {
 function ScrollChevron() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 animate-scroll-bounce" aria-hidden="true">
-      <path d="M6 9l6 6 6-6" stroke="var(--gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -177,12 +177,12 @@ function ScrollChevron() {
 function BrandMark() {
   return (
     <svg viewBox="0 0 120 120" fill="none" className="w-24 h-24 md:w-32 md:h-32 opacity-[0.12]" aria-hidden="true">
-      <circle cx="60" cy="60" r="55" stroke="var(--gold)" strokeWidth="0.5" />
-      <circle cx="60" cy="60" r="45" stroke="var(--gold)" strokeWidth="0.3" strokeDasharray="3 5" />
-      <text x="60" y="55" textAnchor="middle" fill="var(--gold)" fontSize="14" fontFamily="monospace" letterSpacing="0.15em" dominantBaseline="middle">
+      <circle cx="60" cy="60" r="55" stroke="var(--accent)" strokeWidth="0.5" />
+      <circle cx="60" cy="60" r="45" stroke="var(--accent)" strokeWidth="0.3" strokeDasharray="3 5" />
+      <text x="60" y="55" textAnchor="middle" fill="var(--accent)" fontSize="14" fontFamily="monospace" letterSpacing="0.15em" dominantBaseline="middle">
         AÚN
       </text>
-      <text x="60" y="72" textAnchor="middle" fill="var(--gold)" fontSize="10" fontFamily="monospace" letterSpacing="0.25em" dominantBaseline="middle">
+      <text x="60" y="72" textAnchor="middle" fill="var(--accent)" fontSize="10" fontFamily="monospace" letterSpacing="0.25em" dominantBaseline="middle">
         HUMANOS
       </text>
     </svg>
@@ -243,10 +243,10 @@ function useActiveSection() {
 
 function SectionHeader({ children }: { children: string }) {
   return (
-    <h2 className="font-[family-name:var(--font-geist-mono)] text-sm tracking-[0.3em] uppercase text-[var(--gold)] mb-2">
+    <h2 className="font-[family-name:var(--font-geist-mono)] text-sm tracking-[0.3em] uppercase text-[var(--accent)] mb-2">
       <span className="opacity-50">{">"} </span>
       {children}
-      <span className="cursor-blink ml-1 text-[var(--gold)]">_</span>
+      <span className="cursor-blink ml-1 text-[var(--accent)]">_</span>
     </h2>
   );
 }
@@ -255,11 +255,11 @@ function TerminalDivider({ variant = 0 }: { variant?: number }) {
   const symbols = ["◆ ◆ ◆", "— · —", "═══", "▸ ▸ ▸", "◇ ◈ ◇"];
   return (
     <div className="my-16 md:my-24 flex items-center gap-4 opacity-20 px-6 md:px-16 lg:px-24">
-      <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent" />
-      <span className="font-[family-name:var(--font-geist-mono)] text-[10px] text-[var(--gold)] tracking-[0.5em]">
+      <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
+      <span className="font-[family-name:var(--font-geist-mono)] text-[10px] text-[var(--accent)] tracking-[0.5em]">
         {symbols[variant % symbols.length]}
       </span>
-      <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent" />
+      <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
     </div>
   );
 }
@@ -267,14 +267,14 @@ function TerminalDivider({ variant = 0 }: { variant?: number }) {
 function AsciiFrame({ children, className = "", highlight = false }: { children: React.ReactNode; className?: string; highlight?: boolean }) {
   return (
     <div className={`relative ${className}`}>
-      <span className={`absolute -top-1 -left-1 font-[family-name:var(--font-geist-mono)] text-xs ${highlight ? "text-[var(--gold)] opacity-60" : "text-[var(--gold-dim)] opacity-40"}`}>┌</span>
-      <span className={`absolute -top-1 -right-1 font-[family-name:var(--font-geist-mono)] text-xs ${highlight ? "text-[var(--gold)] opacity-60" : "text-[var(--gold-dim)] opacity-40"}`}>┐</span>
-      <span className={`absolute -bottom-1 -left-1 font-[family-name:var(--font-geist-mono)] text-xs ${highlight ? "text-[var(--gold)] opacity-60" : "text-[var(--gold-dim)] opacity-40"}`}>└</span>
-      <span className={`absolute -bottom-1 -right-1 font-[family-name:var(--font-geist-mono)] text-xs ${highlight ? "text-[var(--gold)] opacity-60" : "text-[var(--gold-dim)] opacity-40"}`}>┘</span>
-      <div className={`absolute top-0 left-3 right-3 h-px ${highlight ? "bg-[var(--gold)] opacity-30" : "bg-[var(--gold-dim)] opacity-15"}`} />
-      <div className={`absolute bottom-0 left-3 right-3 h-px ${highlight ? "bg-[var(--gold)] opacity-30" : "bg-[var(--gold-dim)] opacity-15"}`} />
-      <div className={`absolute left-0 top-3 bottom-3 w-px ${highlight ? "bg-[var(--gold)] opacity-30" : "bg-[var(--gold-dim)] opacity-15"}`} />
-      <div className={`absolute right-0 top-3 bottom-3 w-px ${highlight ? "bg-[var(--gold)] opacity-30" : "bg-[var(--gold-dim)] opacity-15"}`} />
+      <span className={`absolute -top-1 -left-1 font-[family-name:var(--font-geist-mono)] text-xs ${highlight ? "text-[var(--accent)] opacity-60" : "text-[var(--gray)] opacity-40"}`}>┌</span>
+      <span className={`absolute -top-1 -right-1 font-[family-name:var(--font-geist-mono)] text-xs ${highlight ? "text-[var(--accent)] opacity-60" : "text-[var(--gray)] opacity-40"}`}>┐</span>
+      <span className={`absolute -bottom-1 -left-1 font-[family-name:var(--font-geist-mono)] text-xs ${highlight ? "text-[var(--accent)] opacity-60" : "text-[var(--gray)] opacity-40"}`}>└</span>
+      <span className={`absolute -bottom-1 -right-1 font-[family-name:var(--font-geist-mono)] text-xs ${highlight ? "text-[var(--accent)] opacity-60" : "text-[var(--gray)] opacity-40"}`}>┘</span>
+      <div className={`absolute top-0 left-3 right-3 h-px ${highlight ? "bg-[var(--accent)] opacity-30" : "bg-[var(--border)] opacity-15"}`} />
+      <div className={`absolute bottom-0 left-3 right-3 h-px ${highlight ? "bg-[var(--accent)] opacity-30" : "bg-[var(--border)] opacity-15"}`} />
+      <div className={`absolute left-0 top-3 bottom-3 w-px ${highlight ? "bg-[var(--accent)] opacity-30" : "bg-[var(--border)] opacity-15"}`} />
+      <div className={`absolute right-0 top-3 bottom-3 w-px ${highlight ? "bg-[var(--accent)] opacity-30" : "bg-[var(--border)] opacity-15"}`} />
       {children}
     </div>
   );
@@ -285,14 +285,14 @@ function MemberAvatar({ initials, isFounder }: { initials: string; isFounder: bo
     <svg viewBox="0 0 56 56" fill="none" className="w-14 h-14 mb-4" aria-hidden="true">
       {isFounder ? (
         <>
-          <circle cx="28" cy="28" r="26" stroke="var(--gold)" strokeWidth="1" opacity="0.4" />
-          <circle cx="28" cy="28" r="22" stroke="var(--gold)" strokeWidth="0.5" opacity="0.2" strokeDasharray="3 3" />
-          <circle cx="28" cy="28" r="18" fill="var(--gold)" fillOpacity="0.08" />
+          <circle cx="28" cy="28" r="26" stroke="var(--accent)" strokeWidth="1" opacity="0.4" />
+          <circle cx="28" cy="28" r="22" stroke="var(--accent)" strokeWidth="0.5" opacity="0.2" strokeDasharray="3 3" />
+          <circle cx="28" cy="28" r="18" fill="var(--accent)" fillOpacity="0.08" />
         </>
       ) : (
         <>
-          <circle cx="28" cy="28" r="26" stroke="var(--gold-dim)" strokeWidth="0.6" opacity="0.25" />
-          <circle cx="28" cy="28" r="18" fill="var(--gold)" fillOpacity="0.04" />
+          <circle cx="28" cy="28" r="26" stroke="var(--gray)" strokeWidth="0.6" opacity="0.25" />
+          <circle cx="28" cy="28" r="18" fill="var(--accent)" fillOpacity="0.04" />
         </>
       )}
       <text
@@ -351,14 +351,14 @@ function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[#050505]/90 backdrop-blur-md border-b border-[var(--gold-dim)]/10"
+          ? "bg-[var(--background)]/90 backdrop-blur-md border-b border-[var(--border)]/10"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between h-16 md:h-20">
         <a
           href="#inicio"
-          className="font-[family-name:var(--font-geist-mono)] text-sm md:text-base tracking-[0.2em] text-[var(--gold)] hover:text-[var(--foreground)] transition-colors text-glow"
+          className="font-[family-name:var(--font-geist-mono)] text-sm md:text-base tracking-[0.2em] text-[var(--accent)] hover:text-[var(--foreground)] transition-colors text-glow"
         >
           AÚN_HUMANOS
         </a>
@@ -371,12 +371,12 @@ function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`font-[family-name:var(--font-geist-mono)] text-[11px] tracking-[0.15em] uppercase transition-colors duration-300 relative ${
-                  isActive ? "text-[var(--gold)]" : "text-[var(--gray-light)] hover:text-[var(--gold)]"
+                  isActive ? "text-[var(--accent)]" : "text-[var(--gray-light)] hover:text-[var(--accent)]"
                 }`}
               >
                 {link.label}
                 {isActive && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-px bg-[var(--gold)] opacity-60" />
+                  <span className="absolute -bottom-1 left-0 right-0 h-px bg-[var(--accent)] opacity-60" />
                 )}
               </a>
             );
@@ -389,14 +389,14 @@ function Navbar() {
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
         >
-          <span className={`block w-6 h-px bg-[var(--gold)] transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-[6px]" : ""}`} />
-          <span className={`block w-6 h-px bg-[var(--gold)] transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-px bg-[var(--gold)] transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-[6px]" : ""}`} />
+          <span className={`block w-6 h-px bg-[var(--accent)] transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-[6px]" : ""}`} />
+          <span className={`block w-6 h-px bg-[var(--accent)] transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
+          <span className={`block w-6 h-px bg-[var(--accent)] transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-[6px]" : ""}`} />
         </button>
       </div>
 
       <div className={`md:hidden overflow-hidden transition-all duration-500 ${menuOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"}`}>
-        <div className="px-6 pb-8 pt-2 bg-[#050505]/95 backdrop-blur-lg border-t border-[var(--gold-dim)]/10 flex flex-col gap-5">
+        <div className="px-6 pb-8 pt-2 bg-[var(--background)]/95 backdrop-blur-lg border-t border-[var(--border)]/10 flex flex-col gap-5">
           {NAV_LINKS.map((link) => {
             const isActive = activeSection === link.href.slice(1);
             return (
@@ -405,10 +405,10 @@ function Navbar() {
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
                 className={`font-[family-name:var(--font-geist-mono)] text-sm tracking-[0.15em] uppercase transition-colors ${
-                  isActive ? "text-[var(--gold)]" : "text-[var(--gray-light)] hover:text-[var(--gold)]"
+                  isActive ? "text-[var(--accent)]" : "text-[var(--gray-light)] hover:text-[var(--accent)]"
                 }`}
               >
-                <span className="text-[var(--gold-dim)] mr-2">{">"}</span>
+                <span className="text-[var(--gray)] mr-2">{">"}</span>
                 {link.label}
               </a>
             );
@@ -430,7 +430,7 @@ function Hero() {
   }, []);
 
   return (
-    <section id="inicio" className="relative h-screen w-full overflow-hidden bg-black">
+    <section id="inicio" className="relative h-screen w-full overflow-hidden bg-[#111]">
       <video
         autoPlay
         muted
@@ -438,49 +438,49 @@ function Hero() {
         playsInline
         preload="auto"
         className="absolute inset-0 w-full h-full object-cover z-0"
-        style={{ filter: "brightness(0.55) contrast(1.15) grayscale(0.2)" }}
+        style={{ filter: "brightness(0.5) contrast(1.15) grayscale(0.3)" }}
         src="/hero-video.mp4"
       />
       <div
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(5,5,5,0.3) 0%, rgba(5,5,5,0.05) 30%, rgba(5,5,5,0.4) 65%, rgba(5,5,5,1) 100%)",
+            "linear-gradient(to bottom, rgba(17,17,17,0.3) 0%, rgba(17,17,17,0.05) 30%, rgba(17,17,17,0.5) 65%, var(--background) 100%)",
         }}
       />
 
       <div className="relative z-[2] h-full flex flex-col justify-end pb-20 md:pb-28 px-6 md:px-16 lg:px-24">
         {/* Status line */}
         <div
-          className={`font-[family-name:var(--font-geist-mono)] text-[10px] md:text-xs tracking-[0.4em] text-[var(--gold-dim)] mb-6 transition-all duration-1000 ${
+          className={`font-[family-name:var(--font-geist-mono)] text-[10px] md:text-xs tracking-[0.4em] text-white/40 mb-6 transition-all duration-1000 ${
             loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          <span className="text-[var(--phosphor)] mr-2">●</span>
+          <span className="text-green-400 mr-2">●</span>
           SISTEMA ACTIVO — TRANSMISIÓN EN CURSO
         </div>
 
         {/* Heading */}
         <h1
-          className={`font-[family-name:var(--font-serif)] text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-[var(--gold)] leading-[0.9] tracking-tight mb-8 text-glow transition-all duration-1000 delay-200 ${
+          className={`font-[family-name:var(--font-serif)] text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white leading-[0.9] tracking-tight mb-8 transition-all duration-1000 delay-200 ${
             loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           AÚN
           <br />
-          <span className="text-[var(--foreground)]">HUMANOS</span>
+          <span className="text-white/70">HUMANOS</span>
         </h1>
 
         {/* Subtitle */}
         <p
-          className={`font-[family-name:var(--font-geist-mono)] text-xs md:text-sm leading-relaxed text-[var(--gray-light)] max-w-2xl mb-10 transition-all duration-1000 delay-500 ${
+          className={`font-[family-name:var(--font-geist-mono)] text-xs md:text-sm leading-relaxed text-white/60 max-w-2xl mb-10 transition-all duration-1000 delay-500 ${
             loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
           Un movimiento filosófico y práctico que emerge como respuesta a los
           desafíos contemporáneos derivados de la acelerada evolución
           tecnológica y la creciente complejidad de la sociedad moderna.
-          <span className="cursor-blink ml-1 text-[var(--gold)]">▊</span>
+          <span className="cursor-blink ml-1 text-white/50">▊</span>
         </p>
 
         {/* CTA */}
@@ -491,14 +491,14 @@ function Hero() {
         >
           <a
             href="#somos"
-            className="group font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.2em] uppercase border border-[var(--gold)]/40 hover:border-[var(--gold)] text-[var(--gold)] hover:bg-[var(--gold)] hover:text-[#050505] px-8 py-4 transition-all duration-500"
+            className="group font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.2em] uppercase border border-white/30 hover:border-white text-white hover:bg-white hover:text-[#111] px-8 py-4 transition-all duration-500"
           >
             <span className="mr-2 group-hover:mr-3 transition-all">{">"}</span>
             EXPLORAR_MOVIMIENTO
           </a>
           <a
             href="#contacto"
-            className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] uppercase text-[var(--gray-light)] hover:text-[var(--gold)] transition-colors"
+            className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.15em] uppercase text-white/50 hover:text-white transition-colors"
           >
             Contactar →
           </a>
@@ -510,15 +510,15 @@ function Hero() {
             loaded ? "opacity-100" : "opacity-0"
           }`}
         >
-          <ScrollChevron />
-          <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gold-dim)] uppercase">
+          <span className="text-white/30"><ScrollChevron /></span>
+          <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-white/30 uppercase">
             Scroll
           </span>
         </div>
       </div>
 
       {/* Corner decoration */}
-      <div className="absolute top-24 right-6 md:right-16 font-[family-name:var(--font-geist-mono)] text-[10px] text-[var(--gold-dim)]/30 leading-tight text-right z-[2]">
+      <div className="absolute top-24 right-6 md:right-16 font-[family-name:var(--font-geist-mono)] text-[10px] text-white/20 leading-tight text-right z-[2]">
         <div>LAT 6.2518</div>
         <div>LON -75.5636</div>
         <div className="mt-1">MEDELLÍN.CO</div>
@@ -534,7 +534,7 @@ function Somos() {
   const gridReveal = useReveal(0.1);
 
   return (
-    <section id="somos" className="relative px-6 md:px-16 lg:px-24 py-24 md:py-36 noise-bg">
+    <section id="somos" className="relative px-6 md:px-16 lg:px-24 py-24 md:py-36 noise-bg bg-[var(--surface-alt)]">
       <div className="max-w-6xl mx-auto relative z-[1]">
         <div
           ref={reveal.ref}
@@ -549,9 +549,9 @@ function Somos() {
               <h3 className="font-[family-name:var(--font-serif)] text-3xl md:text-4xl lg:text-5xl text-[var(--foreground)] leading-tight mb-8">
                 Reflexión profunda.
                 <br />
-                <span className="text-[var(--gold)]">Acción consciente.</span>
+                <span className="text-[var(--accent)]">Acción consciente.</span>
               </h3>
-              <div className="w-16 h-px bg-[var(--gold)] mb-8 opacity-40" />
+              <div className="w-16 h-px bg-[var(--accent)] mb-8 opacity-40" />
             </div>
 
             <div className="flex flex-col justify-center">
@@ -566,7 +566,7 @@ function Somos() {
               <p className="font-[family-name:var(--font-geist-mono)] text-sm leading-[1.9] text-[var(--gray-light)] mt-6">
                 Somos un colectivo de pensadores, académicos y profesionales
                 unidos por una convicción:{" "}
-                <span className="text-[var(--gold)]">
+                <span className="text-[var(--accent)]">
                   la tecnología debe estar al servicio de lo humano, no al revés.
                 </span>
               </p>
@@ -579,24 +579,24 @@ function Somos() {
           ref={gridReveal.ref}
           className="mt-20 md:mt-28"
         >
-          <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gold-dim)] mb-8 uppercase">
+          <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gray)] mb-8 uppercase">
             // Equipo fundador
           </div>
 
           <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger-children ${gridReveal.visible ? "is-visible" : ""}`}>
             {TEAM.map((member, i) => (
               <AsciiFrame key={member.name} highlight={i === 0}>
-                <div className="p-6 md:p-8 group hover:bg-[var(--gold)]/[0.03] transition-colors duration-500">
+                <div className="p-6 md:p-8 group hover:bg-[var(--accent)]/[0.03] transition-colors duration-500">
                   <MemberAvatar initials={member.initials} isFounder={i === 0} />
                   <div className="flex items-start justify-between mb-3">
-                    <span className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.3em] text-[var(--gold-dim)] bg-[var(--gold)]/[0.06] px-2 py-1">
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.3em] text-[var(--gray)] bg-[var(--accent)]/[0.06] px-2 py-1">
                       {member.tag}
                     </span>
-                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] text-[var(--gold-dim)]/40">
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] text-[var(--gray)]/40">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  <h4 className="font-[family-name:var(--font-serif)] text-lg text-[var(--foreground)] mb-2 group-hover:text-[var(--gold)] transition-colors duration-300">
+                  <h4 className="font-[family-name:var(--font-serif)] text-lg text-[var(--foreground)] mb-2 group-hover:text-[var(--accent)] transition-colors duration-300">
                     {member.name}
                   </h4>
                   <p className="font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray-light)]">
@@ -642,8 +642,8 @@ function TrianguloVital() {
                       </feMerge>
                     </filter>
                     <radialGradient id="centerGlow" cx="50%" cy="55%" r="30%">
-                      <stop offset="0%" stopColor="var(--gold)" stopOpacity="0.08" />
-                      <stop offset="100%" stopColor="var(--gold)" stopOpacity="0" />
+                      <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.08" />
+                      <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
                     </radialGradient>
                   </defs>
 
@@ -651,15 +651,15 @@ function TrianguloVital() {
                   <circle cx="200" cy="230" r="120" fill="url(#centerGlow)" />
 
                   {/* Outer circle frame */}
-                  <circle cx="200" cy="220" r="170" stroke="var(--gold)" strokeWidth="0.3" opacity="0.08" strokeDasharray="2 8" />
+                  <circle cx="200" cy="220" r="170" stroke="var(--accent)" strokeWidth="0.3" opacity="0.08" strokeDasharray="2 8" />
 
                   {/* Main triangle */}
                   <path
                     d="M200 50 L375 350 L25 350 Z"
-                    stroke="var(--gold)"
+                    stroke="var(--accent)"
                     strokeWidth="1.2"
                     opacity="0.5"
-                    fill="var(--gold)"
+                    fill="var(--accent)"
                     fillOpacity="0.02"
                     filter="url(#glow)"
                   />
@@ -667,7 +667,7 @@ function TrianguloVital() {
                   {/* Inner triangle */}
                   <path
                     d="M200 120 L310 310 L90 310 Z"
-                    stroke="var(--gold)"
+                    stroke="var(--accent)"
                     strokeWidth="0.4"
                     opacity="0.15"
                     strokeDasharray="6 4"
@@ -675,33 +675,33 @@ function TrianguloVital() {
                   />
 
                   {/* Connecting lines to center */}
-                  <line x1="200" y1="50" x2="200" y2="230" stroke="var(--gold)" strokeWidth="0.5" opacity="0.15" strokeDasharray="3 5" />
-                  <line x1="375" y1="350" x2="200" y2="230" stroke="var(--gold)" strokeWidth="0.5" opacity="0.15" strokeDasharray="3 5" />
-                  <line x1="25" y1="350" x2="200" y2="230" stroke="var(--gold)" strokeWidth="0.5" opacity="0.15" strokeDasharray="3 5" />
+                  <line x1="200" y1="50" x2="200" y2="230" stroke="var(--accent)" strokeWidth="0.5" opacity="0.15" strokeDasharray="3 5" />
+                  <line x1="375" y1="350" x2="200" y2="230" stroke="var(--accent)" strokeWidth="0.5" opacity="0.15" strokeDasharray="3 5" />
+                  <line x1="25" y1="350" x2="200" y2="230" stroke="var(--accent)" strokeWidth="0.5" opacity="0.15" strokeDasharray="3 5" />
 
                   {/* Center rings */}
-                  <circle cx="200" cy="230" r="32" stroke="var(--gold)" strokeWidth="0.6" opacity="0.25" />
-                  <circle cx="200" cy="230" r="22" stroke="var(--gold)" strokeWidth="0.3" opacity="0.15" strokeDasharray="2 3" />
-                  <circle cx="200" cy="230" r="5" fill="var(--gold)" opacity="0.5" filter="url(#glow)" />
+                  <circle cx="200" cy="230" r="32" stroke="var(--accent)" strokeWidth="0.6" opacity="0.25" />
+                  <circle cx="200" cy="230" r="22" stroke="var(--accent)" strokeWidth="0.3" opacity="0.15" strokeDasharray="2 3" />
+                  <circle cx="200" cy="230" r="5" fill="var(--accent)" opacity="0.5" filter="url(#glow)" />
 
                   {/* Vertex nodes — animated via CSS */}
-                  <circle cx="200" cy="50" r="6" fill="var(--gold)" opacity="0.7" filter="url(#glow)" />
-                  <circle cx="375" cy="350" r="6" fill="var(--gold)" opacity="0.7" filter="url(#glow)" />
-                  <circle cx="25" cy="350" r="6" fill="var(--gold)" opacity="0.7" filter="url(#glow)" />
+                  <circle cx="200" cy="50" r="6" fill="var(--accent)" opacity="0.7" filter="url(#glow)" />
+                  <circle cx="375" cy="350" r="6" fill="var(--accent)" opacity="0.7" filter="url(#glow)" />
+                  <circle cx="25" cy="350" r="6" fill="var(--accent)" opacity="0.7" filter="url(#glow)" />
 
                   {/* Outer rings on vertices */}
-                  <circle cx="200" cy="50" r="12" stroke="var(--gold)" strokeWidth="0.4" opacity="0.2" />
-                  <circle cx="375" cy="350" r="12" stroke="var(--gold)" strokeWidth="0.4" opacity="0.2" />
-                  <circle cx="25" cy="350" r="12" stroke="var(--gold)" strokeWidth="0.4" opacity="0.2" />
+                  <circle cx="200" cy="50" r="12" stroke="var(--accent)" strokeWidth="0.4" opacity="0.2" />
+                  <circle cx="375" cy="350" r="12" stroke="var(--accent)" strokeWidth="0.4" opacity="0.2" />
+                  <circle cx="25" cy="350" r="12" stroke="var(--accent)" strokeWidth="0.4" opacity="0.2" />
 
                   {/* Labels */}
-                  <text x="200" y="25" textAnchor="middle" fill="var(--gold)" fontSize="13" fontFamily="monospace" letterSpacing="0.25em" opacity="0.8">
+                  <text x="200" y="25" textAnchor="middle" fill="var(--accent)" fontSize="13" fontFamily="monospace" letterSpacing="0.25em" opacity="0.8">
                     YO
                   </text>
-                  <text x="398" y="378" textAnchor="end" fill="var(--gold)" fontSize="11" fontFamily="monospace" letterSpacing="0.2em" opacity="0.8">
+                  <text x="398" y="378" textAnchor="end" fill="var(--accent)" fontSize="11" fontFamily="monospace" letterSpacing="0.2em" opacity="0.8">
                     LAS COSAS
                   </text>
-                  <text x="2" y="378" textAnchor="start" fill="var(--gold)" fontSize="11" fontFamily="monospace" letterSpacing="0.2em" opacity="0.8">
+                  <text x="2" y="378" textAnchor="start" fill="var(--accent)" fontSize="11" fontFamily="monospace" letterSpacing="0.2em" opacity="0.8">
                     LOS OTROS
                   </text>
 
@@ -718,7 +718,7 @@ function TrianguloVital() {
               <h3 className="font-[family-name:var(--font-serif)] text-3xl md:text-4xl text-[var(--foreground)] leading-tight mb-8">
                 Equilibrio y armonía
                 <br />
-                <span className="text-[var(--gold)]">del ser Humano.</span>
+                <span className="text-[var(--accent)]">del ser Humano.</span>
               </h3>
 
               <p className="font-[family-name:var(--font-geist-mono)] text-sm leading-[1.9] text-[var(--gray-light)] mb-8">
@@ -731,7 +731,7 @@ function TrianguloVital() {
 
               <AsciiFrame>
                 <div className="p-6">
-                  <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gold)] mb-3 uppercase">
+                  <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--accent)] mb-3 uppercase">
                     // Retiro inmersión
                   </div>
                   <p className="font-[family-name:var(--font-geist-mono)] text-xs leading-[1.8] text-[var(--gray-light)] mb-5">
@@ -744,7 +744,7 @@ function TrianguloVital() {
                   </p>
                   <a
                     href="#contacto"
-                    className="inline-block font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.2em] text-[var(--gold-dim)] hover:text-[var(--gold)] transition-colors uppercase"
+                    className="inline-block font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.2em] text-[var(--gray)] hover:text-[var(--accent)] transition-colors uppercase"
                   >
                     {">"} Reservar retiro_
                   </a>
@@ -765,10 +765,10 @@ function HumanismoDigital() {
   const listReveal = useReveal(0.05);
 
   return (
-    <section id="humanismo" className="relative px-6 md:px-16 lg:px-24 py-24 md:py-36 noise-bg">
+    <section id="humanismo" className="relative px-6 md:px-16 lg:px-24 py-24 md:py-36 noise-bg bg-[var(--surface-alt)]">
       <div className="absolute left-4 top-1/2 -translate-y-1/2 hidden xl:block">
         <div
-          className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.5em] text-[var(--gold-dim)]/15 uppercase"
+          className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.5em] text-[var(--gray)]/15 uppercase"
           style={{ writingMode: "vertical-rl" }}
         >
           HUMANISMO · DIGITAL · ÉTICO · CONSCIENTE
@@ -787,7 +787,7 @@ function HumanismoDigital() {
           <div className="mt-12 mb-16 text-center">
             <h3 className="font-[family-name:var(--font-serif)] text-4xl md:text-5xl lg:text-6xl text-[var(--foreground)] mb-4">
               Entender{" "}
-              <span className="text-[var(--gold)] text-glow">para actuar.</span>
+              <span className="text-[var(--accent)] text-glow">para actuar.</span>
             </h3>
             <p className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.2em] text-[var(--gray-light)] mt-6 uppercase">
               Ideario Ético hacia un Humanismo Digital
@@ -809,9 +809,9 @@ function HumanismoDigital() {
             {PRINCIPLES.map((principle, i) => (
               <div
                 key={i}
-                className="group flex gap-4 md:gap-6 py-5 md:py-6 border-b border-[var(--gold-dim)]/10 hover:bg-[var(--gold)]/[0.02] hover:pl-2 transition-all duration-300"
+                className="group flex gap-4 md:gap-6 py-5 md:py-6 border-b border-[var(--border)]/10 hover:bg-[var(--accent)]/[0.02] hover:pl-2 transition-all duration-300"
               >
-                <span className="font-[family-name:var(--font-geist-mono)] text-sm md:text-base text-[var(--gold)] font-bold min-w-[2.5rem] text-right tabular-nums text-glow">
+                <span className="font-[family-name:var(--font-geist-mono)] text-sm md:text-base text-[var(--accent)] font-bold min-w-[2.5rem] text-right tabular-nums text-glow">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <p className="font-[family-name:var(--font-geist-mono)] text-xs md:text-sm leading-[1.8] text-[var(--gray-light)] group-hover:text-[var(--foreground)] transition-colors duration-300">
@@ -825,7 +825,7 @@ function HumanismoDigital() {
           <div className="mt-20 flex flex-col items-center gap-6">
             <SealSVG />
             <div className="text-center">
-              <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.4em] text-[var(--gold)] uppercase">
+              <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.4em] text-[var(--accent)] uppercase">
                 Sello de Humanismo Digital
               </div>
               <div className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.2em] text-[var(--gray)] mt-2">
@@ -860,7 +860,7 @@ function Servicios() {
             <h3 className="font-[family-name:var(--font-serif)] text-3xl md:text-4xl lg:text-5xl text-[var(--foreground)] leading-tight">
               Herramientas para
               <br />
-              <span className="text-[var(--gold)]">seguir siendo humanos.</span>
+              <span className="text-[var(--accent)]">seguir siendo humanos.</span>
             </h3>
             <p className="font-[family-name:var(--font-geist-mono)] text-sm leading-[1.9] text-[var(--gray-light)] md:mt-3">
               Ofrecemos espacios y metodologías para que personas y
@@ -878,15 +878,15 @@ function Servicios() {
           {SERVICES.map((service, i) => (
             <div key={service.title} className="group relative">
               <AsciiFrame>
-                <div className="p-6 md:p-8 h-full hover:bg-[var(--gold)]/[0.03] transition-all duration-500">
+                <div className="p-6 md:p-8 h-full hover:bg-[var(--accent)]/[0.03] transition-all duration-500">
                   <div className="flex items-start justify-between mb-6">
                     <ServiceIcon type={service.id} className="opacity-60 group-hover:opacity-100 transition-opacity" />
-                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] text-[var(--gold-dim)]/40">
+                    <span className="font-[family-name:var(--font-geist-mono)] text-[10px] text-[var(--gray)]/40">
                       SRV.{String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
 
-                  <h4 className="font-[family-name:var(--font-serif)] text-lg text-[var(--foreground)] mb-4 group-hover:text-[var(--gold)] transition-colors duration-300">
+                  <h4 className="font-[family-name:var(--font-serif)] text-lg text-[var(--foreground)] mb-4 group-hover:text-[var(--accent)] transition-colors duration-300">
                     {service.title}
                   </h4>
 
@@ -896,7 +896,7 @@ function Servicios() {
 
                   <a
                     href="#contacto"
-                    className="inline-block mt-6 font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.2em] text-[var(--gold-dim)] group-hover:text-[var(--gold)] transition-colors uppercase"
+                    className="inline-block mt-6 font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.2em] text-[var(--gray)] group-hover:text-[var(--accent)] transition-colors uppercase"
                   >
                     {">"} Consultar
                     <span className="cursor-blink ml-1">_</span>
@@ -925,7 +925,7 @@ function Contacto() {
   }, []);
 
   return (
-    <section id="contacto" className="relative px-6 md:px-16 lg:px-24 py-24 md:py-36 noise-bg">
+    <section id="contacto" className="relative px-6 md:px-16 lg:px-24 py-24 md:py-36 noise-bg bg-[var(--surface-alt)]">
       <div className="max-w-4xl mx-auto relative z-[1]">
         <div
           ref={reveal.ref}
@@ -940,7 +940,7 @@ function Contacto() {
               <h3 className="font-[family-name:var(--font-serif)] text-3xl md:text-4xl text-[var(--foreground)] mb-4">
                 Iniciemos una
                 <br />
-                <span className="text-[var(--gold)]">conversación.</span>
+                <span className="text-[var(--accent)]">conversación.</span>
               </h3>
 
               <p className="font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray-light)] leading-[1.8] mb-10">
@@ -950,12 +950,12 @@ function Contacto() {
 
               {submitted ? (
                 <div className="py-12">
-                  <div className="font-[family-name:var(--font-geist-mono)] text-sm text-[var(--gold)] text-glow mb-2">
+                  <div className="font-[family-name:var(--font-geist-mono)] text-sm text-[var(--accent)] text-glow mb-2">
                     {">"} Mensaje enviado correctamente.
                   </div>
                   <div className="font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray-light)]">
                     Nos pondremos en contacto contigo pronto.
-                    <span className="cursor-blink ml-1 text-[var(--gold)]">_</span>
+                    <span className="cursor-blink ml-1 text-[var(--accent)]">_</span>
                   </div>
                 </div>
               ) : (
@@ -965,8 +965,8 @@ function Contacto() {
                     { id: "email", label: "email", type: "email" },
                   ].map((field) => (
                     <div key={field.id} className="relative">
-                      <div className="flex items-center gap-2 font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gold-dim)] mb-2">
-                        <span className={`transition-colors ${focusedField === field.id ? "text-[var(--gold)]" : ""}`}>{">"}</span>
+                      <div className="flex items-center gap-2 font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray)] mb-2">
+                        <span className={`transition-colors ${focusedField === field.id ? "text-[var(--accent)]" : ""}`}>{">"}</span>
                         <span>{field.label}:</span>
                       </div>
                       <input
@@ -975,15 +975,15 @@ function Contacto() {
                         required
                         onFocus={() => setFocusedField(field.id)}
                         onBlur={() => setFocusedField(null)}
-                        className="w-full bg-transparent border-b border-[var(--gold-dim)]/20 focus:border-[var(--gold)] text-[var(--foreground)] font-[family-name:var(--font-geist-mono)] text-sm py-3 outline-none transition-colors placeholder:text-[var(--gray)]/30"
+                        className="w-full bg-transparent border-b border-[var(--border)]/20 focus:border-[var(--accent)] text-[var(--foreground)] font-[family-name:var(--font-geist-mono)] text-sm py-3 outline-none transition-colors placeholder:text-[var(--gray)]/30"
                         placeholder={`Ingresa tu ${field.label}...`}
                       />
                     </div>
                   ))}
 
                   <div className="relative">
-                    <div className="flex items-center gap-2 font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gold-dim)] mb-2">
-                      <span className={`transition-colors ${focusedField === "mensaje" ? "text-[var(--gold)]" : ""}`}>{">"}</span>
+                    <div className="flex items-center gap-2 font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray)] mb-2">
+                      <span className={`transition-colors ${focusedField === "mensaje" ? "text-[var(--accent)]" : ""}`}>{">"}</span>
                       <span>mensaje:</span>
                     </div>
                     <textarea
@@ -992,14 +992,14 @@ function Contacto() {
                       required
                       onFocus={() => setFocusedField("mensaje")}
                       onBlur={() => setFocusedField(null)}
-                      className="w-full bg-transparent border-b border-[var(--gold-dim)]/20 focus:border-[var(--gold)] text-[var(--foreground)] font-[family-name:var(--font-geist-mono)] text-sm py-3 outline-none transition-colors resize-none placeholder:text-[var(--gray)]/30"
+                      className="w-full bg-transparent border-b border-[var(--border)]/20 focus:border-[var(--accent)] text-[var(--foreground)] font-[family-name:var(--font-geist-mono)] text-sm py-3 outline-none transition-colors resize-none placeholder:text-[var(--gray)]/30"
                       placeholder="Escribe tu mensaje..."
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="group mt-4 font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.2em] uppercase border border-[var(--gold-dim)]/30 hover:border-[var(--gold)] text-[var(--gold)] hover:bg-[var(--gold)] hover:text-[#050505] px-8 py-4 transition-all duration-500"
+                    className="group mt-4 font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.2em] uppercase border border-[var(--border)]/30 hover:border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-white px-8 py-4 transition-all duration-500"
                   >
                     <span className="mr-2 group-hover:mr-3 transition-all">{">"}</span>
                     ENVIAR_MENSAJE
@@ -1012,7 +1012,7 @@ function Contacto() {
             {/* Social + brand SVG */}
             <div className="flex flex-col justify-between">
               <div>
-                <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gold-dim)] mb-6 uppercase">
+                <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gray)] mb-6 uppercase">
                   // Redes
                 </div>
 
@@ -1023,15 +1023,15 @@ function Contacto() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex items-center gap-4 py-3 border-b border-[var(--gold-dim)]/10 hover:border-[var(--gold)]/20 transition-colors"
+                      className="group flex items-center gap-4 py-3 border-b border-[var(--border)]/10 hover:border-[var(--accent)]/20 transition-colors"
                     >
-                      <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gold-dim)] w-8">
+                      <span className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.3em] text-[var(--gray)] w-8">
                         {social.symbol}
                       </span>
-                      <span className="font-[family-name:var(--font-geist-mono)] text-sm text-[var(--gray-light)] group-hover:text-[var(--gold)] transition-colors">
+                      <span className="font-[family-name:var(--font-geist-mono)] text-sm text-[var(--gray-light)] group-hover:text-[var(--accent)] transition-colors">
                         {social.label}
                       </span>
-                      <span className="ml-auto font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gold-dim)] opacity-0 group-hover:opacity-100 transition-opacity">
+                      <span className="ml-auto font-[family-name:var(--font-geist-mono)] text-xs text-[var(--gray)] opacity-0 group-hover:opacity-100 transition-opacity">
                         →
                       </span>
                     </a>
@@ -1055,21 +1055,21 @@ function Contacto() {
 
 function Footer() {
   return (
-    <footer className="relative px-6 md:px-16 lg:px-24 py-10 border-t border-[var(--gold-dim)]/10">
+    <footer className="relative px-6 md:px-16 lg:px-24 py-10 border-t border-[var(--border)]/10">
       {/* Decorative SVG line */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <svg viewBox="0 0 80 16" fill="none" className="w-20 h-4">
-          <line x1="0" y1="8" x2="30" y2="8" stroke="var(--gold)" strokeWidth="0.5" opacity="0.2" />
-          <circle cx="40" cy="8" r="3" stroke="var(--gold)" strokeWidth="0.5" opacity="0.3" />
-          <circle cx="40" cy="8" r="1" fill="var(--gold)" opacity="0.4" />
-          <line x1="50" y1="8" x2="80" y2="8" stroke="var(--gold)" strokeWidth="0.5" opacity="0.2" />
+          <line x1="0" y1="8" x2="30" y2="8" stroke="var(--accent)" strokeWidth="0.5" opacity="0.2" />
+          <circle cx="40" cy="8" r="3" stroke="var(--accent)" strokeWidth="0.5" opacity="0.3" />
+          <circle cx="40" cy="8" r="1" fill="var(--accent)" opacity="0.4" />
+          <line x1="50" y1="8" x2="80" y2="8" stroke="var(--accent)" strokeWidth="0.5" opacity="0.2" />
         </svg>
       </div>
 
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="font-[family-name:var(--font-geist-mono)] text-[10px] tracking-[0.2em] text-[var(--gray)]/60">
           © {new Date().getFullYear()} Todos los derechos reservados — Aún Humanos
-          <span className="cursor-blink ml-1 text-[var(--gold-dim)]">_</span>
+          <span className="cursor-blink ml-1 text-[var(--gray)]">_</span>
         </div>
 
         <div className="flex items-center gap-6">
@@ -1077,7 +1077,7 @@ function Footer() {
             <a
               key={link.href}
               href={link.href}
-              className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.15em] uppercase text-[var(--gray)]/40 hover:text-[var(--gold)] transition-colors"
+              className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.15em] uppercase text-[var(--gray)]/40 hover:text-[var(--accent)] transition-colors"
             >
               {link.label}
             </a>
@@ -1087,7 +1087,7 @@ function Footer() {
         {/* Back to top */}
         <a
           href="#inicio"
-          className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.15em] uppercase text-[var(--gray)]/40 hover:text-[var(--gold)] transition-colors"
+          className="font-[family-name:var(--font-geist-mono)] text-[9px] tracking-[0.15em] uppercase text-[var(--gray)]/40 hover:text-[var(--accent)] transition-colors"
           aria-label="Back to top"
         >
           ↑ INICIO
