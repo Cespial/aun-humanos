@@ -1,30 +1,55 @@
-# Aún Humanos
+# Aún Humanos — propuesta de rediseño
 
-> Proyecto web exploratorio — Next.js 16 + TypeScript + Tailwind CSS 4.
+Sitio blanco, mínimo y editorial para **aunhumanos.com**, con cinco pestañas:
+`Columnas · Editorial · Tienda · Somos · Contacto`.
 
-[![Next.js](https://img.shields.io/badge/Next.js-16-000?logo=next.js)](https://nextjs.org)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+Fuera quedaron Servicios, Triángulo Vital y Humanismo Digital. El centro del
+sitio ya no es la oferta: es lo que el colectivo escribe.
 
-## Stack
+## El motor
 
-- **Next.js 16** (App Router) + React 19
-- **TypeScript 5**
-- **Tailwind CSS 4**
+Nadie sube columnas a mano. `lib/fuentes.ts` tiene los canales de columnista
+que publican los propios medios:
 
-## Instalación
+| Medio        | Firma                    | Canal                                            |
+| ------------ | ------------------------ | ------------------------------------------------ |
+| La República | Santiago Jiménez Londoño | `/analisis/santiago-jimenez-londono-4353436/rss` |
+| Al Poniente  | Santiago Jiménez Londoño | `/author/sjimenezlon/feed/`                      |
+| Al Poniente  | Felipe Jaramillo Vélez   | `/author/fejaramillo/feed/`                      |
 
-```bash
-git clone https://github.com/Cespial/aun-humanos.git
-cd aun-humanos
-npm install
-npm run dev
+Cada hora el sitio los relee (`revalidate = 3600`), normaliza título, bajada,
+firma y fecha, y publica lo nuevo. Si un medio se cae, el sitio sigue mostrando
+lo que ya tenía.
+
+`data/columnas.ts` es el **archivo histórico**: los canales solo devuelven las
+últimas columnas, así que ahí queda la memoria larga y lo que no tiene canal
+propio (por ejemplo Ethic). Se fusiona con lo que llega de los canales sin
+repetir: la misma URL nunca sale dos veces.
+
+**Para sumar un medio nuevo** (El Colombiano, The New York Times…): agregar su
+canal de columnista a `FUENTES`. Nada más.
+
+## Estructura
+
+```
+app/           portada · /columnas · /editorial · /tienda · /somos · /contacto
+components/    Nav, Footer, FilaColumna, ListaColumnas, Configurador, Reveal
+data/          columnas.ts (archivo) · equipo.ts · libros.ts · tienda.ts
+lib/           columnas.ts (el motor) · fuentes.ts · formato.ts · tipos.ts
+public/        equipo/ · libros/ · prendas/
 ```
 
-## Licencia
+## Diseño
 
-MIT
+Papel blanco puro, tinta `#14110f`, una sola nota de color (terracota `#c4663a`,
+heredada del sitio actual) que no pasa del 2% de la superficie. Titulares en
+Instrument Serif, texto en DM Sans, micro-etiquetas en Geist Mono.
 
----
+## Correr
 
-Desarrollado por [Cristian Espinal Maya](https://github.com/Cespial)
+```bash
+npm run dev
+npm run build
+```
+
+Va con `noindex`: es una propuesta, no debe competir con el sitio real.

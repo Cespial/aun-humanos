@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+/*
+ * AÚN HUMANOS — papel blanco, tinta casi negra, una sola nota de color.
+ * El acento (terracota, heredado del sitio actual) no pasa del 2% de la superficie:
+ * un punto, una flecha, una línea. Todo lo demás es aire.
+ */
+@theme {
+  --color-paper: #ffffff;
+  --color-paper-2: #faf9f7;
+  --color-ink: #14110f;
+  --color-ink-2: #56504b;
+  --color-ink-3: #8c8681;
+  --color-line: #e9e5e0;
+  --color-line-2: #f3f0ec;
+  --color-accent: #c4663a;
+
+  --font-display: var(--font-instrument), ui-serif, Georgia, serif;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+:focus-visible {
+  outline: 1.5px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* --- Tipografía de la casa --- */
+
+/* Titulares: serif de alto contraste, muy junta, muy grande. */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+}
+
+/* Micro-etiquetas: mono, versalitas, muy espaciada. */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-ink-3);
+  font-weight: 400;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* Enlace de texto con subrayado fino que se completa al pasar. */
+.enlace {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.enlace:hover {
+  background-size: 100% 1px;
+}
+
+/* --- Aparición al hacer scroll --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes entrada {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.entrada {
+  animation: entrada 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes linea {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.linea {
+  transform-origin: left;
+  animation: linea 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
